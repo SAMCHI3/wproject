@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.BoardMapper">
+    <select id="list2" resultType="com.example.domain.BoardVO">
+        select b.*, p.pename, p.pmodel, p.pimage, c.*
+		from buy b, product p, board c
+		where b.bmodel=p.pmodel and b.bcode=c.bcode1 
+		and c.bcode1 like concat ("%",#{bcode1},"%")
+		or c.bcode2 like concat ("%",#{bcode2},"%")
+		or c.bcode3 like concat ("%",#{bcode3},"%")
+		or c.bcode4 like concat ("%",#{bcode4},"%")
+		or c.bcode5 like concat ("%",#{bcode5},"%")
+    </select>
+   <select id="list" resultType="com.example.domain.BoardVO">
+        select b.*, l.*
+        from board b
+        left join likes l
+		on bno=lbno 
+		order by bno desc
+        limit #{pageStart},#{perPageNum}
+    </select>
+    <select id="count" resultType="int">
+        select count(*) from board 
+    </select>
+    <insert id="insert">
+	    insert into board(bid,bcontent,bimage)
+	    values(#{bid},#{bcontent},#{bimage})
+    </insert>
+    <select id="read" resultType="com.example.domain.BoardVO">
+	    select * from board
+	    where bno=#{bno}
+    </select>
+    <select id="top" resultType="com.example.domain.BoardVO">
+    	select b.*, l.*
+        from board b
+        left join likes l
+		on bno=lbno 
+		order by bcount desc
+        limit #{pageStart},#{perPageNum}
+    </select>
+    <select id="list1" resultType="com.example.domain.BoardVO">
+	    select b.*, p.pkname, p.pename, p.pmodel, p.pbrand, p.pimage
+		from buy b, product p
+		where b.bmodel=p.pmodel and bid=#{bid} and bout='5'
+		order by bdate desc
+		limit 0,5
+    </select>
+    <update id="update">
+    	update board set bcontent=#{bcontent},bimage=#{bimage} where bno=#{bno}
+    </update>
+    <delete id="delete">
+    	delete from board where bno=#{bno}
+    </delete>
+<!--     <select id="count1" resultType="int"> -->
+<!-- 	    select count(*) from buy  -->
+<!-- 		where bid=#{bid} and bout='5' -->
+<!--     </select> -->
+	<update id="blcount">
+		update board
+		set bcount=bcount+1
+		where bno=#{bno}
+	</update>
+	
+	<update id="blcountcancel">
+		update board
+		set bcount=bcount-1
+		where bno=#{bno}
+	</update>
+</mapper>

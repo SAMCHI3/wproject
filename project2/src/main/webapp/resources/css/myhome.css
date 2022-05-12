@@ -1,0 +1,6 @@
+@CHARSET "UTF-8";
+@media screen and (max-width: 500px;){
+	.footer{
+		display:none;
+	}
+}

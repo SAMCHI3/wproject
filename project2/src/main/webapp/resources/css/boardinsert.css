@@ -1,0 +1,76 @@
+@CHARSET "UTF-8";
+@font-face {
+    font-family: 'Cafe24Ssurround';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.container{
+	text-align:center;
+	border: 10px solid lightgray;
+    border-radius: 20px;
+    position: relative;
+    top: 150px;
+}
+.container h1{
+	font-family: 'Cafe24Ssurround';
+	display:inline-block;
+	margin:30px;
+	padding-left: 50px;
+}
+}
+.form-insert table{
+	display:inline-block;
+}
+.form-insert{
+	text-align: center;
+}
+#image{
+	border-radius:15px;
+}
+#bcontent{
+	border-radius:15px;
+	border:2px solid lightgray;
+}
+tbody{
+	height:700px;
+}
+.insert-button{
+	padding-left: 80px;
+}
+.insert-button button{
+	width: 120px;
+    height: 50px;
+    border: 2px solid lightgray;
+    background: white;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px;
+    text-align:center;
+    transition: all 1s;
+}
+.insert-button button:hover{
+	background: black;
+	color:white;
+}
+.insert-button1 button{
+	width: 120px;
+    height: 50px;
+    border: 2px solid lightgray;
+    background: white;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px;
+    text-align:center;
+    transition: all 1s;
+    position: relative;
+    left: 40px;
+}
+.form-control{
+	    margin: 10px 0px 15px 0px;
+}
+#image{
+	 margin-bottom: 20px;
+}

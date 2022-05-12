@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.MypageMapper">
+	<select id="blist" resultType="com.example.domain.ProductVO2">
+        select b.*,p.pename,p.pkname,p.pimage,p.pmodel
+		from buy b, product p
+		where bmodel=pmodel and bid=#{bid} and ing='2' and bout='0'
+		order by bdate desc
+		limit 0,3
+    </select>
+    <select id="slist" resultType="com.example.domain.ProductVO">
+        select s.*,p.pename,p.pkname,p.pimage,p.pmodel
+		from sell s, product p
+		where smodel=pmodel and sid=#{sid} and ing='4' and sout='0'
+		order by sdate desc
+		limit 0,3
+    </select>
+    <select id="slist1" resultType="com.example.domain.ProductVO">
+        select s.*,p.pename,p.pkname,p.pimage,p.pmodel
+		from sell s, product p
+		where smodel=pmodel and sid=#{sid}
+		order by sdate desc
+		limit 0,3
+    </select>
+    <select id="blist1" resultType="com.example.domain.ProductVO2">
+        select b.*,p.pename,p.pkname,p.pimage,p.pmodel
+		from buy b, product p
+		where bmodel=pmodel and bid=#{bid}
+		order by bdate desc
+		limit 0,3
+    </select>
+    <select id="count" resultType="int">
+    	select count(ing)
+		from sell
+		where sid=#{sid} and ing='4'
+    </select>
+</mapper>

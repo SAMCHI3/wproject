@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+.new2{
+	width: 70px;
+    height: 40px;
+    margin-right: 30px;
+    border-radius: 15px;
+    border: 1px solid lightgray;
+    background: white;
+    font-weight:bold;
+    color:white;
+}
+.new2 a{
+	color:black;
+	text-decoration:none;
+}
+.famous2{
+	width: 70px;
+    height: 40px;
+    margin-right: 30px;
+    border-radius: 15px;
+    border: 1px solid lightgray;
+    background: black;
+    font-weight:bold;
+}
+.famous2 a{
+	color:white;
+	text-decoration:none;
+}

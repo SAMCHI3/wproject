@@ -1,0 +1,31 @@
+@CHARSET "UTF-8";
+#page{
+	text-align: center;
+    position: relative;
+    top: 10rem;
+}
+#page h2{
+	font-weight:bold;
+}
+.container textarea{
+	border-radius: 15px;
+    border: 2px solid black;
+	height:400px;
+}
+.dbutton{
+	text-align:center;
+	margin-top:30px;
+}
+.dbutton button{
+	width: 100px;
+    height: 35px;
+    border-radius: 15px;
+    background: none;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px;
+}
+.dbutton button a{
+	color:black;
+	text-decoration:none;
+}

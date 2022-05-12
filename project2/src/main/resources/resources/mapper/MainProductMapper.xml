@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.MainProductMapper">
+    <select id="list" resultType="com.example.domain.ProductVO">
+        select * from product
+        order by plcount desc
+        limit #{pageStart}, #{perPageNum}
+    </select>
+    <select id="list2" resultType="com.example.domain.ProductVO">
+        select p.*,s.sdate,s.ssell
+		from sell s, product p
+		where p.pmodel=s.smodel
+		group by pmodel
+        order by sdate desc
+        limit #{pageStart}, #{perPageNum}
+    </select>
+    <select id="count" resultType="int">
+    	select count(s.sdate)
+		from sell s, product p
+		where p.pmodel=s.smodel
+		order by s.sdate desc
+    </select>
+</mapper>

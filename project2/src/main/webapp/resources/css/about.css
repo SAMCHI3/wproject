@@ -1,0 +1,96 @@
+@CHARSET "UTF-8";
+@CHARSET "UTF-8";
+@font-face {
+    font-family: '양진체';
+    src: url('https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.visual { 
+  position:relative; 
+  margin-top:100px;
+  height: 500px;
+  }
+  .visual button{
+  position:absolute;
+  z-index:10;
+  top:50%;
+  transform:translateY(-50%);
+  width: 71px; height: 71px;
+  border-radius:100%;
+  background:transparent;
+  border:none;
+  text-align: center;
+  cursor: pointer;
+  }
+  .visual button:before{ font-family:'xeicon'; color:#fff; font-size:45px;}
+  .visual button.slick-prev{left:0; font-size:0; color:transparent; left:50px;}
+  .visual button.slick-prev:before{content:"\e93d";}
+  .visual button.slick-next{right:0;font-size:0; color:transparent; right:50px;}
+  .visual button.slick-next:before{content:"\e940";}
+
+	#tbl {width:960px; overflow:hidden; margin:0px auto;}
+	.pro {width:200px; float:left; margin-left:25px;}
+	#tbl1 {width:960px; overflow:hidden; margin:0px auto; margin-top:30px;}
+.pro1 {
+	width:300px;
+	float:left; 
+	margin:0px 0px 20px 25px;
+	border-radius:15px;
+}
+.pro1 img{
+	width:300px;
+	height:120px;
+	object-fit:cover;
+	border-radius:15px;
+}
+.pro1 p {
+	text-align: center;
+	font-family: '양진체';
+	margin:10px;
+}
+	.pename, .pkname, .pbrand .plprice {width:150px; font-size:12px; font-weight:bold; padding:5px;}
+	.prev{
+    position:relative; top:165px; right:35px;
+    font: bold 30px/1 "arial";
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    background-color:transparent;
+    border: none;
+    float: left;
+    color: gray;
+    cursor: pointer;
+  }
+  .next{
+
+	position:relative ; bottom:435px; left:25px;
+    font: bold 30px/1 "arial";
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    background-color:transparent;
+    border: none;
+    float: right;
+    color: gray;
+    cursor: pointer;
+   
+  }
+  
+  .title1 {
+  	margin-bottom: 20px;
+  }
+  @media screen and (max-width: 1200px){
+  	.pro1{
+  	width:250px;
+  	}
+  	.pro1 img{
+  	width:250px; height:130px;}
+  }
+  @media screen and (max-width: 768px){
+  	.pro1{
+  	width:150px;
+  	}
+  	.pro1 img{
+  	width:150px; height:100px;}
+  }

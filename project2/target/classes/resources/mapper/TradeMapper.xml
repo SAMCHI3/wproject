@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.TradeMapper">
+    <select id="sinsert">
+        insert into sell(ssell,sid,ssize,smodel,ing,sout)
+    	values(#{ssell}, #{sid}, #{ssize},#{smodel},#{ing},#{sout})
+    </select>
+    <insert id="binsert">
+    	insert into buy (bprice,bid,baddress,btell,bsize,bmodel,baddress1,ing,bout)
+    	values(#{bprice}, #{bid}, #{baddress}, #{btell}, #{bsize}, #{bmodel}, #{baddress1},#{ing},#{bout})
+    </insert>
+    <update id="update">
+    	update sell set sout=#{sout} where scode=#{scode}
+    </update>
+    <update id="update1">
+    	update buy set bout=#{bout} where bcode=#{bcode}
+    </update>
+    <insert id="pinsert">
+    	insert into api(aid,aemail,aname,amodel,akname,aprice,aaddress,aaddress1,atell,apay)
+    	values(#{aid},#{aemail},#{aname},#{amodel},#{akname},#{aprice},#{aaddress},#{aaddress1},#{atell}, #{apay})
+    </insert>
+</mapper>

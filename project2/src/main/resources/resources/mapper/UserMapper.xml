@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.UserMapper">
+    <select id="read" resultType="com.example.domain.UserVO">
+        select * from user
+        where uid=#{uid}
+    </select>
+    <select id="list" resultType="com.example.domain.UserVO">
+    	select * from user
+    </select>
+    <select id="total" resultType="int">
+    	select count(*) from user
+    </select>
+    <update id="update">
+		update user
+		set uname=#{uname}, upass=#{upass}, uimage=#{uimage}, uaddress=#{uaddress},
+		utel=#{utel},uemail=#{uemail},upay=#{upay},ucode=#{ucode}, uaddress1=#{uaddress1}
+		where uid=#{uid}
+	</update>
+	<update id="delete">
+		update user
+		set ucode=#{ucode}
+		where uid=#{uid}
+	</update>
+	<insert id="insert">
+    	insert into user(uname,uid,udate,udate2,udate3,upass,ugender,uemail,utel,uaddress,uaddress1)
+    	values(#{uname},#{uid},#{udate},#{udate2},#{udate3},#{upass},#{ugender},#{uemail},#{utel},#{uaddress},#{uaddress1})
+    </insert>
+    <select id="idChk" resultType="int">
+	select count(*) from user
+	where uid=#{uid}
+	</select>
+	<update id="lpupdate">
+		update user set uplike=#{uplike}
+		where uid=#{uid}
+	</update>
+</mapper>

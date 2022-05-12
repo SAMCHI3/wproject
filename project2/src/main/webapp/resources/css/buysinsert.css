@@ -1,0 +1,89 @@
+@CHARSET "UTF-8";
+.background{
+	background:lightgray;
+	height:1000px;
+	text-align:center;
+}
+.background h1{
+	position:relative;
+	top:3%;
+	font-weight: bold;
+    margin-bottom: 20px;
+}
+.container{
+	text-align: center;
+    display: inline-block;
+    position: relative;;
+    top: 15%;
+    background: white;
+    border-radius: 15px;
+    height: 600px;
+}
+.buy{
+	position: relative;
+    top: 7%;
+}
+.trade2 img{
+	width: 200px;
+    height: 200px;
+}
+#tr{font-weight: 600;
+    margin-top: 15px;
+}
+table{
+	display:inline-block;
+}   
+table tr{
+	height:35px;
+}
+#ssell1{
+	border: none;
+    border-bottom: 1px solid;
+}
+.price{
+	font-size: 20px;
+}
+.color{
+	font-size: 20px;
+	text-align:center;
+}
+.gender{
+	font-size: 20px;
+	text-align:center;
+}
+.color select{
+	    border-radius: 15px;
+    width: 150px;
+    height: 40px;
+    text-align: center;
+    border: 2px solid;
+    font-weight: bold;
+    margin: 10px 0px 20px 0px;
+}
+.sell1{
+	width: 150px;
+    height: 50px;
+    border: 2px solid black;
+    border-radius: 15px;
+    background: black;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+.sell{
+	width: 150px;
+    height: 50px;
+    border: 2px solid black;
+    border-radius: 15px;
+    background: white;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}
+.trade2 img{
+	border-radius:15px;
+}
+.sbutton{
+	position: relative;
+    top: 50px;
+}

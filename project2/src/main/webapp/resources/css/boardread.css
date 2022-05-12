@@ -1,0 +1,108 @@
+@CHARSET "UTF-8";
+@font-face {
+    font-family: 'Cafe24Ssurround';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.container{
+	width:500px;
+	
+}
+#page h1{
+	text-align:center;
+	font-family: 'Cafe24Ssurround';
+	
+}
+.title{
+	padding:10px;
+	font-weight:bold;
+}
+form {
+	position:relative;
+	top:100px;
+}
+#bcontent{
+	width: 500px;
+    height: 100px;
+    border-radius: 15px;
+    border: 2px solid lightgray;
+}
+.imote{
+	font-size:30px;
+}
+.imote button{
+	font-size: 20px;
+    border: none;
+    background: white;
+    font-size:30px;
+}
+.read-button{
+	display:inline-block;
+}
+.read-button button{
+	width: 100px;
+    height: 50px;
+    background: white;
+    border: 2px solid lightgray;
+    border-radius: 15px;
+    font-size: 20px;
+    font-family: 'Cafe24Ssurround';
+    position: relative;
+    left: 10%;
+    margin: 30px;
+    display:inline-block;
+}
+.replies img{
+	height: 50px; 
+	width: 50px; 
+	border-radius: 50px;
+}
+.replies span{
+	padding-left: 8rem;
+	font-size: 20px;
+}
+.rcontent{
+	margin:5px;
+	border: none;
+    height: 40px;
+}
+.rcontent:focus {
+  outline: none;
+}
+.rbutton{
+	text-align:right;
+	padding-right:20px;
+}
+.rbutton button{
+	border: none;
+    background: none;
+    font-weight: bold;
+}
+#cke_editor{
+	border-radius: 15px;
+	border:none;
+}
+#cke_1_top{
+	border-radius: 15px;
+}
+#cke_1_bottom{
+	border-radius: 15px;
+}
+#insert{
+	float: right;
+    margin-top: 20px;
+    border: 2px solid black;
+    border-radius: 15px;
+    width: 100px;
+    height: 40px;
+    background: none;
+    font-weight: bold;
+}
+.form1{
+	background: #E4E7EA;
+}
+h5{
+	margin: 30px 0px 30px 0px;
+	font-family: 'Cafe24Ssurround';
+}

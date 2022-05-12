@@ -1,0 +1,115 @@
+@CHARSET "UTF-8";
+.background{
+	position: relative;
+    top: 100px;
+    width: 100%;
+    height: 1000px;
+    background: gainsboro;
+}
+#trade {
+	position: relative;
+    padding: 30px;
+    top: 100px;
+    width: 1000px;
+    height: 800;
+    margin: auto;
+    background: white;
+    border-radius: 20px;
+}
+.trade1 {
+	
+	margin-left:25px;
+	display: flex;
+	width: 100%;
+}
+.trade1 img{
+	width:200px;
+	height:200px;
+	background: #FAFAFA;
+    border-radius: 15px;
+}
+#tr{
+	margin-left: 50px;
+}
+.tr1{
+	margin-bottom:10px;
+}
+.tr1:nth-of-type(1){
+	font-size: 25px;
+}
+.tr1:nth-of-type(2){
+	font-size: 20px;
+}
+.tr1:nth-of-type(3){
+	color: gray;
+}
+#trade hr{
+	height: 5px;
+    background: #000;
+    margin: 40px 0px 40px 20px;
+}
+#text{
+	padding-left: 30px;
+}
+#text span{
+	color:red;
+	font-weight:bold;
+}
+.text1{
+	margin-bottom:20px;
+}
+.text1:nth-of-type(1){
+	margin-top:10px;
+}
+.text1 input{
+	position: relative;
+    bottom: 20px;
+    width: 30;
+    height: 30;
+    border: 2px solid #bcbcbc;
+    cursor: pointer;
+    float: right;
+}
+.text1 input:nth-of-type(2){
+	bottom:15px;
+}
+.select{
+	width: 100%;
+    height: 80px;
+    text-align: center;
+}
+.select #buy{
+	margin: 30px;
+    width: 200px;
+    height: 70px;
+    font-size: 23px;
+    font-weight:bold;
+    background: black;
+    color: white;
+    border-radius: 20px;
+    border: 1px solid gray;
+    box-shadow: 2px 1px 1px 1px lightgrey;
+}.select #buy1{
+	margin: 30px;
+    width: 200px;
+    height: 70px;
+    font-size: 23px;
+    font-weight:bold;
+    background: black;
+    color: white;
+    border-radius: 20px;
+    border: 1px solid gray;
+    box-shadow: 2px 1px 1px 1px lightgrey;
+}
+.select #cancel{
+	margin: 30px;
+    width: 200px;
+    height: 70px;
+    font-size: 23px;
+    font-weight:bold;
+    background: white;
+    color: black;
+    border-radius: 20px;
+    border: 1px solid gray;
+    box-shadow: 2px 1px 1px 1px lightgrey;
+}

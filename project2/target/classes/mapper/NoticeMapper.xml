@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.NoticeMapper">
+    <select id="noticelist" resultType="com.example.domain.NoticeVO">
+        select * from notice
+        where ncode1=#{ncode1} and ncode2=#{ncode2}
+    </select>
+    <select id="noticetotal" resultType="int">
+    	select count(*) from notice
+    	 where ncode1=#{ncode1} and ncode2=#{ncode2}
+    </select>
+    <select id="noticeread" resultType="com.example.domain.NoticeVO">
+        select * from notice
+        where ncount=#{ncount}	
+    </select>
+    <insert id="insert">
+   		insert into notice(notice,ncode1,ncode2,ntitle,nid)
+    	values(#{notice},#{ncode1},#{ncode2},#{ntitle},#{nid})
+    </insert>
+	<update id="update">
+		update notice
+		set notice=#{notice},ntitle=#{ntitle}
+		where ncount=#{ncount}
+	</update>
+	<delete id="delete">
+		delete from notice where ncount=#{ncount}
+	</delete>
+</mapper>

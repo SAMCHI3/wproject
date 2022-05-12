@@ -1,0 +1,65 @@
+@CHARSET "UTF-8";
+@font-face {
+    font-family: 'Cafe24Ssurround';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.container h1{
+	font-family: 'Cafe24Ssurround';
+	display:inline-block;
+	margin-bottom:50px;
+}
+.container{
+	text-align:center;
+}
+.userlist td{
+	padding: 20px;
+}
+.user img{
+	width:150px;
+	height:150px;
+	border-radius:15px;
+}
+.uid{
+	font-size:25px;
+	font-weight:bold;
+}
+.userchk{
+	position: relative;
+    display: inline-block;
+    left: 25%;
+        border: 2px solid lightgray;
+    background: no-repeat;
+    font-size: 20px;
+    font-weight: bold;
+    width: 250px;
+    height: 50px;
+    border-radius: 15px;
+}
+#delete{
+	border: none;
+    background: no-repeat;
+    padding: 10px 0px 0px 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.userchk td:nth-of-type(1){
+	padding-left:30px;
+}
+#chkAll{
+	width:30px;
+	height:20px;
+	position: relative;
+    top: 3px;
+}
+.chk{
+	width: 30px;
+    height: 20px;
+    position: relative;
+    top: 5px;
+}
+.userlist{
+	position: relative;
+    left: 100px;
+}

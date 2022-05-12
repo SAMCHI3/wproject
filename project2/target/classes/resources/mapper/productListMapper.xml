@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.ProductListMapper">
+    <select id="list" resultType="com.example.domain.ProductVO">
+        select * from product
+        <if test="keyword!=null">
+	         where pbrand like concat("%",#{keyword},"%")
+	         or pename like concat("%",#{keyword},"%")
+	         or pkname like concat("%",#{keyword},"%")
+	         or pmodel like concat("%",#{keyword},"%")
+	     </if>
+        limit #{pageStart},#{perPageNum}
+    </select>
+   <select id="count" resultType="int">
+        select count(*) from product
+        <if test="keyword!=null">
+	         where pbrand like concat("%",#{keyword},"%")
+	         or pename like concat("%",#{keyword},"%")
+	         or pkname like concat("%",#{keyword},"%")
+	         or pmodel like concat("%",#{keyword},"%")
+	     </if>
+    </select>
+    <select id="read" resultType="com.example.domain.ProductVO1">
+        select p.*, u.uplike
+		from product p, user u
+		where pmodel=#{pmodel} and uid=#{uid}
+    </select>
+    <select id="read1" resultType="com.example.domain.ProductVO2">
+        select * from product
+         where pmodel=#{pmodel}
+    </select>
+    <select id="readSize" resultType="com.example.domain.ProductVO">
+	        select s.*,u.*,p.pename,p.pkname,p.pimage,p.pmodel
+			from sell s, product p, user u
+			where smodel=pmodel and ssize=#{ssize} and pmodel=#{pmodel} and sout='0' and uid=#{uid}
+			order by ssell
+			limit 0,1	
+    </select>
+    <select id="readBuy" resultType="com.example.domain.ProductVO2">
+	        select b.*,p.pename,p.pkname,p.pimage,p.pmodel
+			from buy b, product p
+			where bmodel=pmodel and bsize=#{bsize} and pmodel=#{pmodel} and bout='0'
+			order by bprice
+			limit 0,1	
+    </select>
+     <insert id="insert">
+    	insert into product(pbrand,pename,pkname,pimage,pmodel,pdate,pcode,pccode,pgender,plux)
+    	values(#{pbrand},#{pename},#{pkname},#{pimage},#{pmodel},#{pdate},#{pcode},#{pccode},#{pgender},#{plux})
+    </insert>
+    
+    <update id="update">
+    	update product 
+    	set pimage=#{pimage},pbrand=#{pbrand},pename=#{pename},pkname=#{pkname},
+    	pcode=#{pcode},pccode=#{pccode},pgender=#{pgender},plux=#{plux}
+    	where pmodel=#{pmodel}
+    </update>
+    
+    <delete id="delete">
+    	delete from product 
+    	where pmodel=#{pmodel}
+    </delete>
+	
+	<update id="plcount">
+		update product
+		set plcount=plcount+1
+		where pmodel=#{pmodel}
+	</update>
+	
+	<update id="plcountCancel">
+		update product
+		set plcount=plcount-1
+		where pmodel=#{pmodel}
+	</update>
+</mapper>

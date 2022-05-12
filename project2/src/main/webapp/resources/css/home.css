@@ -1,0 +1,96 @@
+@CHARSET "UTF-8";
+#page{
+	position: relative;
+    top: 50px;
+}
+#menu {
+   margin: 20px 0px;
+   border-top: 1px dotted gray;
+   border-bottom:1px dotted gray;
+   padding: 20px 0px;
+}
+
+#menu span {
+   padding: 0px 20px;   
+}
+
+#menu a{
+   text-decoration: none;
+   font-size:20px;
+   color: aqua;
+   font-weight:bold;
+}
+
+#menu a:hover{
+   color: green;
+   cursor:pointer;
+}
+
+#footer h3 {
+   text-align: center;
+   padding: 20px;
+   border-yop: 1px dotted gray;
+}
+
+table {
+   margin: 0px auto;
+   border-collapse: collapse;
+}
+
+td {
+   padding: 5px;
+   border-bottom: 1px solid gray;
+   margin-bottom: 50px;
+}
+
+table .title {
+   background: gray;
+   color: white;
+   text-align: center;
+}
+
+table .row:hover{
+   color:green;
+   cursor:pointer;
+}
+
+h1 {text-align: center; margin-bottom: 50px;}
+
+   .pagination {
+      margin: 0px auto;
+      margin-top: 20px;
+      text-align:center;
+   }
+   
+   .pagination a {
+      padding: 3px 10px;
+      text-decoration: none;
+   }
+   
+   .pagination .active {
+      background: gray;
+      color: white;
+      
+   }
+   .pagination a:hover {
+      background-color: #ddd;
+   }
+   
+   td {text-align:center;}
+   
+   .ellipsis{
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+}
+
+.title {
+   margin-top: 20px;
+}
+
+#tbl {
+   margin-top: 30px;
+}
+
+
+

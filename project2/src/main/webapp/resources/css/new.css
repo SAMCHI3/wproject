@@ -1,0 +1,64 @@
+@CHARSET "UTF-8";
+@font-face {
+    font-family: 'Cafe24Ssurround';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+#new {width:70%;
+ 	  overflow:hidden;
+  	  margin:0px auto; 
+ }
+ #new img{
+ border-radius:15px;
+ }
+#page h1{
+	font-family: 'Cafe24Ssurround';
+	text-align:center;
+}
+.newimg{
+	width:100%;
+	padding: 30px 0px 50px 0px;
+}
+.new{
+	width: 20%;
+    float: left;
+    text-align: center;
+    display: inline-block;
+    margin: 30px;
+    padding: 30px;
+    background: gray;
+    border-radius: 15px;
+    background:#FFEBCD;
+    height:400px;
+}
+.ellipsis-pename{
+	font-size:12px; 
+	font-weight:bold;
+	margin-top:20px;
+}
+.ellipsis-pkname{
+	font-size:12px; 
+	font-weight:bold;
+	color:gray;
+}
+.ellipsis-pbrand{
+	font-weight:bold;
+}
+.pagination{
+	display: inline-block;
+	position: relative;
+    top: 130px;
+    left: 40%;
+}
+
+.pagination a{
+	font-size:20px;
+	color:black;
+	padding:20px;
+	text-decoration: none;
+}
+.pagination a:hover{
+	background:black;
+	color:white;
+}

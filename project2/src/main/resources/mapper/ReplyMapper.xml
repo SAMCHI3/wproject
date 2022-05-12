@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.ReplyMapper">
+    <select id="list" resultType="com.example.domain.ReplyVO">
+        select u.*, r.*
+		from user u, reply r
+		where u.uid = r.rid and rbno=#{rbno}
+		order by rno desc;
+<!--         limit #{pageStart},#{perPageNum} -->
+    </select>
+    <insert id="insert">
+    	insert into reply(rbno,rid,rcontent,rimage)
+    	values(#{rbno},#{rid},#{rcontent},#{rimage})
+    </insert>
+    <update id="update">
+    	update reply 
+    	set rcontent=#{rcontent} where rno=#{rno}
+    </update>
+    
+    <delete id="delete">
+    	delete from reply 
+    	where rno=#{rno}
+    </delete>
+<!--     <select id="count" resultType="int"> -->
+<!--         select count(*) from reply -->
+<!--         where rbno=#{rbno} -->
+<!--     </select> -->
+</mapper>
