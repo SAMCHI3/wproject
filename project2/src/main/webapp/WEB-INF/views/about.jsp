@@ -72,7 +72,7 @@
 		</div>
 	</div>
 </div>      
-<div style="padding: 50px 50px; width: 80%; height: 700px; margin:0px auto;">
+<div style="padding: 50px 50px; width: 70%; height: 700px; margin:0px auto;">
 	<div class="title1">
 		<h3 style="text-align:center;"><strong>인기상품</strong></h3><br>
 	</div>
@@ -90,7 +90,7 @@
 	</script>
 </div>
 <div><img src="/resources/img/캠퍼스룩.jpg" style="width:100%; height:500px; object-fit:contain; background:#4E69A0;"></div>
-<div style="padding: 50px 50px; width: 80%; height: 700px; margin:0px auto;">
+<div style="padding: 50px 50px; width: 70%; height: 700px; margin:0px auto;">
 	<div class="title1">
 		<h3 style="text-align:center;"><strong>최신상품</strong></h3><br>
 	</div>
@@ -144,7 +144,7 @@
         $('#slider-div1').slick({
             slide : 'div',  //슬라이드 되어야 할 태그 ex) div, li 
             infinite : true,  //무한 반복 옵션
-            slidesToShow :5,  // 한 화면에 보여질 컨텐츠 개수
+            slidesToShow :4,  // 한 화면에 보여질 컨텐츠 개수
             slidesToScroll : 1,  //스크롤 한번에 움직일 컨텐츠 개수
             speed : 500,  // 다음 버튼 누르고 다음 화면 뜨는데까지 걸리는 시간(ms)
             arrows : true,  // 옆으로 이동하는 화살표 표시 여부
@@ -161,7 +161,7 @@
             // 반응형 웹구현 옵션
             responsive : [
                 {
-                    breakpoint : 960,  //화면 사이즈 960px
+                    breakpoint : 1200,  //화면 사이즈 960px
                     settings : { slidesToShow : 3 }  //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
                 },
                 {
@@ -197,7 +197,7 @@
 	        $('#slider-div').slick({
 	            slide : 'div',  //슬라이드 되어야 할 태그 ex) div, li 
 	            infinite : true,  //무한 반복 옵션
-	            slidesToShow :5,  // 한 화면에 보여질 컨텐츠 개수
+	            slidesToShow :4,  // 한 화면에 보여질 컨텐츠 개수
 	            slidesToScroll : 1,  //스크롤 한번에 움직일 컨텐츠 개수
 	            speed : 500,  // 다음 버튼 누르고 다음 화면 뜨는데까지 걸리는 시간(ms)
 	            arrows : true,  // 옆으로 이동하는 화살표 표시 여부
@@ -213,17 +213,19 @@
 
 	            // 반응형 웹구현 옵션
 	            responsive : [
-	                {
-	                    breakpoint : 960,  //화면 사이즈 960px
-	                    settings : { slidesToShow : 3 }  //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
-	                },
-	                {
-	                    breakpoint : 768,  //화면 사이즈 768px
-	                    settings : { slidesToShow : 2 }  //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
-	                }
-	            ]
-	        });
-	    };
-
+	                          {
+	                              breakpoint : 1200,  //화면 사이즈 960px
+	                              settings : { slidesToShow : 3 }  //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+	                          },
+	                          {
+	                              breakpoint : 768,  //화면 사이즈 768px
+	                              settings : { slidesToShow : 2 }  //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+	                          }
+	                      ]
+	                  });
+	              };
+		
+	   
+	    	
 </script>
 
