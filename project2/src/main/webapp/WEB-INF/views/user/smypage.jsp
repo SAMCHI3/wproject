@@ -30,16 +30,16 @@
 		                <div class="purchase-top">
 		                    <a href="#">
 		                        <dl>
-		                            <dt style="color:red;">0</dt>
-		                            <dd>판매 입찰</dd>
+		                            <dt style="color:red;">${vo3 + vo4}</dt>
+		                            <dd>총판매현황</dd>
 		                        </dl>
 		                        <dl>
-		                            <dt>0</dt>
-		                            <dd>진행중</dd>
+		                            <dt>${vo3}</dt>
+		                            <dd>입찰판매</dd>
 		                        </dl>
 		                        <dl>
-		                            <dt>0</dt>
-		                            <dd>종료</dd>
+		                            <dt>${vo4}</dt>
+		                            <dd>판매완료</dd>
 		                        </dl>
 		                    </a>
 		                </div>

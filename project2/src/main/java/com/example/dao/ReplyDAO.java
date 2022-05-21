@@ -12,4 +12,6 @@ public interface ReplyDAO {
 	public void delete(int rno);
 	public int count(Criteria cri,int rbno);
 	public ReplyVO read(int rno);
+	public void rcount(int rno,ReplyVO vo);
+	public void rcountcancel(int rno,ReplyVO vo);
 }

@@ -1,5 +1,6 @@
 package com.example.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.example.domain.Criteria;
@@ -8,7 +9,7 @@ import com.example.domain.ProductVO1;
 import com.example.domain.ProductVO2;
 
 public interface ProductListDAO {
-	public List<ProductVO> list(Criteria cri);
+	public List<ProductVO1> list(Criteria cri);
 	public List<ProductVO1> list();
 	public int count(Criteria cri);
 	public ProductVO1 read(String pmodel,String uid);
@@ -21,4 +22,6 @@ public interface ProductListDAO {
 	public void delete(String pmodel);
 	public void plcount(String pmodel,ProductVO1 vo);
 	public void plcountcancel(String pmodel, ProductVO1 vo);
+	public List<HashMap<String, Object>> slist(String smodel);
+	public List<HashMap<String, Object>> blist(String bmodel);
 }

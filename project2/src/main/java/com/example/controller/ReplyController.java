@@ -26,6 +26,16 @@ public class ReplyController {
 	@Autowired
 	ReplyDAO dao;
 	
+	@RequestMapping(value="/update1",method=RequestMethod.POST)
+	public String lrupdate(ReplyVO vo, int rno){
+		System.out.println(".........." + rno + "\n"+ vo.getRrlike());
+		if(vo.getRrlike()==1){
+			dao.rcount(rno, vo);
+		}else if(vo.getRrlike()==0){
+			dao.rcountcancel(rno, vo);
+		}
+		return "redirect:/";
+	}
 	
 	@RequestMapping(value="/insert",method=RequestMethod.POST)
 	public String insert(ReplyVO vo,int bno,String bid){

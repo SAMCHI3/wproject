@@ -50,12 +50,12 @@ header #inner .login{
 	right: 30px;
 }
 header #inner .login li {
-	float: left;
+	float: right;
 }
 header #inner .login li a{
 	
 	display: block;
-	font: 12px/1 "arial";
+	font: 18px/1 "arial";
 	color: #999;
 	padding: 0px 10px;
 }
@@ -70,7 +70,7 @@ header #inner .menu li{
 header #inner .menu li a{
 	margin-top: 40px;
 	display: block;
-	font: bold 15px/1 "arial";
+	font: bold 20px/1 "arial";
 	color: #555;
 	padding: 20px 40px;
 	transition: all 0.5s;
@@ -78,6 +78,20 @@ header #inner .menu li a{
 header #inner .menu li a:hover{
 	background: #555;
 	color: #fff;
+}
+.out{
+	width: 17.5rem;
+    position: relative;
+    bottom: 0.4rem;
+    
+}
+.out p{
+	width: 11rem;
+    font-weight: bold;
+    color: black;
+    display: inline-block;
+    font-size: 18px;
+    padding-left: 10px;
 }
 
 

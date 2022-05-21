@@ -59,4 +59,50 @@ public class MypageController {
 		map.put("blist1", dao.blist1(bid));
 		return map;
 	}
+	
+	@RequestMapping("/slist10.json")
+	   @ResponseBody
+	   public Map<String,Object> slist10JSON(String sid){
+	      HashMap<String, Object> map=new HashMap<>();
+	      map.put("slist10", dao.slist10(sid));
+	      return map;
+	   }
+	   @RequestMapping("/slist11.json")
+	   @ResponseBody
+	   public Map<String,Object> slist11JSON(String sid){
+	      HashMap<String, Object> map=new HashMap<>();
+	      map.put("slist11", dao.slist11(sid));
+	      return map;
+	   }
+	   
+	   @RequestMapping("/slist12.json")
+	   @ResponseBody
+	   public Map<String,Object> slist12JSON(String sid){
+	      HashMap<String, Object> map=new HashMap<>();
+	      map.put("slist12", dao.slist12(sid));
+	      return map;
+	   }
+	   
+	   @RequestMapping("/blist20.json")
+	   @ResponseBody
+	   public Map<String,Object> blist20JSON(String bid){
+	      HashMap<String, Object> map=new HashMap<>();
+	      map.put("blist20", dao.blist20(bid));
+	      return map;
+	   }
+	   @RequestMapping("/blist21.json")
+	   @ResponseBody
+	   public Map<String,Object> blist21JSON(String bid){
+	      HashMap<String, Object> map=new HashMap<>();
+	      map.put("blist21", dao.blist21(bid));
+	      return map;
+	   }
+	   
+	   @RequestMapping("/blist22.json")
+	   @ResponseBody
+	   public Map<String,Object> blist22JSON(String bid){
+	      HashMap<String, Object> map=new HashMap<>();
+	      map.put("blist22", dao.blist22(bid));
+	      return map;
+	   }
 }

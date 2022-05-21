@@ -30,11 +30,12 @@
 		{{#each llist}}
 			<div class="trade1">
 				<div style="display: inline-flex;">
-					<image src="/display?fileName={{pimage}}" width=150 height=150
-					onClick='location.href="/productList/read?pmodel={{pmodel}}&uid=${vo.uid}"'>
+					<image src="/display?fileName={{pimage}}" width=150 height=150 class="read"
+					onClick=getRead()>
 				</div>
 				<div class="tr">
-					<div class="tr2">판매모델:{{pmodel}}</div>
+					<div class="tr2 lpcnt" style="display:none">{{lpcnt}}</div>
+					관심모델:<div class="tr2 pmodel">{{pmodel}}</div>
 					<div class="tr2">상품명:{{pename}}</div>
 					<div class="tr2">최근거래금액:{{plprice}}</div>
 				</div>
@@ -62,7 +63,16 @@
 			}
 		});
 	}
-
+	
+	function getRead(){
+		$("#tbl").on("click",".read",function(e){
+		      e.preventDefault();
+		      var pmodel=$(this).parent().parent().find(".pmodel").html();
+		      var lpcnt=$(this).parent().parent().find(".lpcnt").html();
+		      location.href="/productList/read?pmodel="+pmodel+"&uid="+uid+"&lpcnt="+lpcnt;
+		   })
+	}
+	
 </script>
 
 

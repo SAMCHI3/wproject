@@ -5,6 +5,24 @@ public class Criteria extends ProductVO{
 	private int perPageNum; // 한 페이지 출력 데이터수
 	private String searchType; // 검색키
 	private String keyword; // 검색어
+	private String pcode;
+	private String pccode;
+
+	public String getPcode() {
+		return pcode;
+	}
+
+	public void setPcode(String pcode) {
+		this.pcode = pcode;
+	}
+
+	public String getPccode() {
+		return pccode;
+	}
+
+	public void setPccode(String pccode) {
+		this.pccode = pccode;
+	}
 
 	public Criteria() {
 		this(1, 10);
@@ -55,6 +73,6 @@ public class Criteria extends ProductVO{
 	@Override
 	public String toString() {
 		return "Criteria [page=" + page + ", perPageNum=" + perPageNum + ", searchType=" + searchType + ", keyword="
-				+ keyword + "]";
+				+ keyword + ", pcode=" + pcode + ", pccode=" + pccode + "]";
 	}
 }

@@ -46,7 +46,6 @@ $(frm).on("submit",function(e){
  	var bcontent=$(frm.bcontent).val();
  	var bid=$(frm.bid).val();
 	
- 	alert(bimage+"\n"+bcontent+"\n"+bid+"\n");
 	
  	if(bimage==""){
          alert("이미지을 선택하세요");

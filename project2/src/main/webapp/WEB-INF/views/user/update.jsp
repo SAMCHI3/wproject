@@ -3,7 +3,8 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link href="/resources/css/mypage.css" rel="stylesheet" >
-<link href="/resources/css/update.css" rel="stylesheet" >   
+<link href="/resources/css/update.css" rel="stylesheet" >  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 		<div id="page" class="container">
 				 <h2><a href="/user/mypage?uid=${vo.uid}">마이페이지</a></h2>
 				 <h1>프로필 정보</h1>
@@ -25,7 +26,12 @@
 				</div>
 		<div class="d-flex p-3 my-profile profile-update">
 					<div class="flex-shrink-0">
-						<img src="/display?fileName=${vo.uimage}" style="width: 150px; height: 150px; border-radius: 12px;">
+						<c:if test="${vo.uimage == null}">
+								<img src="/resources/img/기본이미지.jpg" onerror="this.src='/resources/img/유저.png'" style="width: 150px; height: 150px; border-radius: 12px;"/>
+						</c:if>
+						<c:if test="${vo.uimage != null}">
+								<img src="/display?fileName=${vo.uimage}" style="width: 150px; height: 150px; border-radius: 12px;">
+						</c:if>
 					</div>
 						<div class="flex-grow-1 ms-3 mt-1">
 							<h4 class="fw-bold mb-0">${vo.uid}</h4>
@@ -71,9 +77,9 @@
 				<input type="text" name="uaddress1" value="${vo.uaddress1}" style="width:500px;">
 			</div>
 			<div class="unit">
-				<h6>사진</h6>
+				<h6>사진 변경</h6>
 					<input type="file" name="file" style="display:none;">
-					<img src="/display?fileName=${vo.uimage}" id="image" width=150 height=150>
+					<img src="/resources/img/기본이미지.jpg" style="width: 150px; height: 150px; border-radius: 12px;" id="image">
 					<input type="hidden" name="uimage" value="${vo.uimage}">
 			</div>
 		</table>

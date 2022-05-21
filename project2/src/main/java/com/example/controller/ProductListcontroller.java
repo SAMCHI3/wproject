@@ -3,7 +3,11 @@ package com.example.controller;
 
 
 import java.io.File;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -75,6 +79,7 @@ public class ProductListcontroller {
 				model.addAttribute("vo", dao.read(pmodel,uid));
 				model.addAttribute("pageName","productList/read.jsp");
 		}else if(lpcnt!=null){
+			System.out.println("........");
 			model.addAttribute("vo",dao.read2(pmodel,uid,lpcnt));
 			model.addAttribute("pageName","productList/read.jsp");
 			}
@@ -116,7 +121,7 @@ public class ProductListcontroller {
 	public Map<String,Object> categoryJSON(Criteria cri,String pcode,String pccode,String pbrand, String plprice, String plux){
 
 		Map<String,Object> map=new HashMap<>();
-		cri.setPerPageNum(10);
+		cri.setPerPageNum(9);
 		
 		PageMaker pm=new PageMaker();
 		pm.setCri(cri);
@@ -192,5 +197,55 @@ public class ProductListcontroller {
 	public String insert(Model model){
 		model.addAttribute("pageName","productList/insert.jsp");
 		return "/home";
+	}
+	
+	@RequestMapping("read.json")
+	@ResponseBody
+	public List<List<Object>> slist(String smodel){
+		List<List<Object>> array=new ArrayList<>();
+		List<HashMap<String, Object>> list=dao.slist(smodel);
+		
+		List<Object> arr=new ArrayList<>();
+		arr.add("판매일");
+		arr.add("판매가격");
+		array.add(arr);
+		
+		for(Map<String,Object> map:list){
+			arr=new ArrayList<>();
+			int ssell1=Integer.parseInt((String) map.get("ssell"));
+//			DecimalFormat df=new DecimalFormat("#,###");
+//			int ssell1 = df.format(map.get("ssell"));
+			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+			String strDate=sdf.format(map.get("sdate"));
+			arr.add(strDate);
+			arr.add(ssell1);
+			array.add(arr);
+		}
+		return array;
+	}
+	
+	@RequestMapping("read1.json")
+	@ResponseBody
+	public List<List<Object>> blist(String bmodel){
+		List<List<Object>> array=new ArrayList<>();
+		List<HashMap<String, Object>> list=dao.blist(bmodel);
+		
+		List<Object> arr=new ArrayList<>();
+		arr.add("구매일");
+		arr.add("구매가격");
+		array.add(arr);
+		
+		for(Map<String,Object> map:list){
+			arr=new ArrayList<>();
+//			int buy=Integer.parseInt((String) map.get("bprice"));
+//			DecimalFormat df=new DecimalFormat("#,###");
+//			int ssell1 = df.format(map.get("ssell"));
+			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+			String strDate=sdf.format(map.get("bdate"));
+			arr.add(strDate);
+			arr.add(map.get("bprice"));
+			array.add(arr);
+		}
+		return array;
 	}
 }

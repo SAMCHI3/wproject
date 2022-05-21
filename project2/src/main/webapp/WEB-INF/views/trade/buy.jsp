@@ -56,7 +56,7 @@
                   <c:if test="${vo.ssize!=null}">
                      <button id="buy">구매 계속</button>
                   </c:if>
-                  <button id="cancel">구매 취소</button>
+                  <button id="cancel"><a href="/productList/read?pmodel=${param.pmodel}&uid=${uid}">구매 취소</a></button>
                </div>
             </div>
          </c:if>
@@ -109,5 +109,9 @@
       }else if($(".chk3").is(":checked") == true){
          if(!confirm("선택한 상품을 구매하시겠습니까?")) return;
       }
+   });
+   
+   $("#cancel").on("click", function(){
+	   location.href="/productList/read?pmodel=" + ${param.pmodel} + "&uid=" + ${uid};
    });
 </script>

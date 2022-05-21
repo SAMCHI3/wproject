@@ -56,15 +56,15 @@ public class TradeController {
 	}
 	
 	@RequestMapping(value="/insert", method=RequestMethod.POST)
-	@ResponseBody
-	public void binsert(SellVO vo){
+	public String binsert(SellVO vo){
 		service.insert(vo);
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value="/insert1", method=RequestMethod.POST)
-	@ResponseBody
-	public void insert(SellVO vo){
+	public String insert(SellVO vo){
 		tdao.insert(vo);
+		return "redirect:/";
 	}
 	
 	@RequestMapping("/sinsert")
@@ -82,18 +82,18 @@ public class TradeController {
 	}
 	
 	@RequestMapping(value="/sinsert", method=RequestMethod.POST)
-	public void sinsert(SellVO vo){
+	public String sinsert(SellVO vo){
 		service.sinsert(vo);
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value="/sinsert1", method=RequestMethod.POST)
-	@ResponseBody
-	public void sinsert1(SellVO vo){
+	public String sinsert1(SellVO vo){
 		tdao.sinsert(vo);
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value="/pinsert", method=RequestMethod.POST)
-	@ResponseBody
 	public String pinsert(ApiVO vo){
 		tdao.pinsert(vo);
 		return "redirect:/";

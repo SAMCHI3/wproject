@@ -1,6 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<style>
+	.title {white-space: nowrap;
+  			overflow: hidden;
+  			text-overflow: ellipsis;}	
+	</style>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link href="/resources/css/list.css" rel="stylesheet" >
@@ -10,7 +15,7 @@
 			<input type="text" placeholder="검색어" id="keyword"> 
 			<input type="button" value="검색" id="search">
 		</div>
-	</div>	
+	</div>
 <div class="container">
 	<c:if test="${ucode== 2}">
    <button class="insert">상품등록</button>
@@ -56,8 +61,8 @@
 							<li><input type="radio" value="et" name="cl">기타</li>
 						</ul>
 					</div>
-					<li class="ctmenu-top"><input type="checkbox" value="etc">잡화</li>
-					<li class="ctmenu-top"><input type="checkbox" value="1">럭셔리</li>
+					<li class="ctmenu-top"><input type="checkbox" value="etc" class="etc">잡화</li>
+					<li class="ctmenu-top"><input type="checkbox" value="1" class="lux">럭셔리</li>
 				
 				</ul>
 			</div>
@@ -132,15 +137,16 @@
 					style="width:300px; border-radius:15px;" class="img5" 
 					pmodel={{pmodel}} onClick="getRead()"></li>
 				<li style="font-weight:bold;">{{pbrand}}</li>
-				<li >{{pename}}</li>
-				<li style="color:gray;">{{pkname}}</li>
+				<li class="title">{{pename}}</li>
+				<li class="title" style="color:gray;">{{pkname}}</li>
 				<li >{{plprice}}</li>
+				<li class="lpcnt" lpcnt={{lpcnt}}><span style="display:none;">{{lpcnt}}</span><li>
 			</ul>
 		{{/each}}
 	
 	</script>
 	</div>
-		<div class="pagination"></div>
+		<div class="pagination" style="margin-top:50px;"></div>
 	</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -150,10 +156,14 @@
 	$(".searchkey").on("click", function(){
 		$(".shop-search").addClass("shop-modal");
 	});
-	
+
+
 	$("#search").on("click", function(){
 		$(".shop-search").removeClass("shop-modal");
 	});
+
+
+	
 </script>
 <script>
 	document.querySelector(".shop-search").addEventListener("click", function(e){
@@ -178,16 +188,18 @@
 	var plprice = "";
 	var plux = "";
 	var uid="${uid}"
+	
 		
 		function getRead(){
 			$(".img5").on("click", function(){
 				var pmodel=$(this).attr('pmodel');
-				
-				alert(uid);
+				var lpcnt=$(this).parent().parent().find(".lpcnt").attr('lpcnt');
 				if(uid==""){
 					location.href="/productList/read?pmodel=" + pmodel;
-				}else{
-					location.href="/productList/read?pmodel=" + pmodel + "&uid=" + uid;
+				}else if(uid!="" && lpcnt==0){
+					location.href="/productList/read?pmodel=" + pmodel + "&uid=" + uid 
+				}else if(uid!="" && lpcnt != 0){
+					location.href="/productList/read?pmodel=" + pmodel + "&uid=" + uid + "&lpcnt=" + lpcnt;
 				}
 			});
 		};
@@ -219,7 +231,7 @@
 				if (pccode == "allsh") {
 					pccode = "";
 				}
-
+				
 				$.ajax({
 					type : "get",
 					url : "/productList/category.json",
@@ -297,7 +309,6 @@
 				$(".etc").prop("checked", true);
 				var pcode = $(".etc").val();
 			};
-				
 				$.ajax({
 					type : "get",
 					url : "/productList/category.json",
@@ -366,7 +377,7 @@
 				$(".lux").prop("checked", true);
 				var plux = $(".lux").val();
 			};
-				
+
 				$.ajax({
 					type : "get",
 					url : "/productList/category.json",

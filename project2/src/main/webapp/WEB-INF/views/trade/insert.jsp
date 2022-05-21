@@ -31,7 +31,7 @@
                   </c:if>
                   <c:if test="${vo.ssell==null}">
                      <div class="tr1">최근 거래가 : 
-                        <fmt:formatNumber value="${vo.plprice}" pattern="#,###"/>원
+                        ${vo.plprice}
                      </div>
                   </c:if>
                </div>
@@ -98,7 +98,7 @@
             <div class="buy-button">
             
             	  <c:if test="${vo.ssize!=null}">
-                     <button onClick="requestPay()" type="submit" name="buy" value="1" id="buy"  class="sbuy">즉시구매</button>
+                     <button onClick="requestPay()" type="button" name="buy" value="1" class="sbuy"  >즉시구매</button>
                   </c:if>
                   <c:if test="${vo.ssize==null}">
                      <button type="submit" name="buy" id="bid" value="2" class="sbuy1">입찰구매</button>
@@ -114,43 +114,40 @@
       e.preventDefault();
    });
    
-   //즉시구매눌렀을때
-   $(".sbuy").on("click", function() {
-	  requestPay();
-      var bprice = $(frm.bprice).val();
-      var bid = $(frm.bid).val();
-      var bsize = $(frm.bsize).val();
-      var bmodel = $(frm.bmodel).val();
-      var baddress = $(frm.baddress).val();
-      var baddress1 = $(frm.baddress1).val();
-      var btell = $(frm.btell).val();
-      var ing1=$("#ing1").val();
-      var bout=$(frm.bout).val();
-      var scode=$(frm.scode).val();
-      var sout=$(frm.sout).val();
-      $(frm.ing).val(ing1);
+//    //즉시구매눌렀을때
+//    $(".sbuy").on("click", function() {
+//       var bprice = $(frm.bprice).val();
+//       var bid = $(frm.bid).val();
+//       var bsize = $(frm.bsize).val();
+//       var bmodel = $(frm.bmodel).val();
+//       var baddress = $(frm.baddress).val();
+//       var baddress1 = $(frm.baddress1).val();
+//       var btell = $(frm.btell).val();
+//       var ing1=$("#ing1").val();
+//       var bout=$(frm.bout).val();
+//       var scode=$(frm.scode).val();
+//       var sout=$(frm.sout).val();
+//       $(frm.ing).val(ing1);
       
-      alert(scode +"n"+ sout) + "n" + ing;
-      if (btell == "") {
-         alert("전화번호를 입력해주세요!");
-         $(frm.btell).focus();
-         return;
-      } else if (baddress == "") {
-         alert("주소를 입력해주세요!");
-         $(frm.baddress).focus();
-         return;
-      } else if (baddress1 == "") {
-         alert("주소를 입력해주세요!");
-         $(frm.baddress1).focus();
-         return;
-      } else {
-         if (!confirm("상품을구매하실래요?")) return;
-         
-         frm.submit();
-         
-         href.location="/";
-      }
-   });
+//       alert(scode +"n"+ sout) + "n" + ing;
+//       if (btell == "") {
+//          alert("전화번호를 입력해주세요!");
+//          $(frm.btell).focus();
+//          return;
+//       } else if (baddress == "") {
+//          alert("주소를 입력해주세요!");
+//          $(frm.baddress).focus();
+//          return;
+//       } else if (baddress1 == "") {
+//          alert("주소를 입력해주세요!");
+//          $(frm.baddress1).focus();
+//          return;
+//       } else {
+//          if (!confirm("상품을구매하실래요?")) return;
+//          frm.submit();
+       
+//       }
+//    });
    
    $(".sbuy1").on("click", function() {
       frm.action="insert1";
@@ -167,7 +164,7 @@
       $(frm.bout).val('0');
       $(frm.ing).val(ing);
       
-      alert(bid + "/" + bmodel);
+
       if (btell == "") {
          alert("전화번호를 입력해주세요!");
          $(frm.btell).focus();
@@ -183,7 +180,7 @@
       } else {
          if (!confirm("상품을 입찰구매하실래요?")) return;
          frm.submit();
-         href.location="/";
+
       }
    });
 
@@ -206,13 +203,14 @@
    var uaddress="${vo.uaddress}";
    var uaddress1="${vo.uaddress1}";
    var apay="";
+   var del=1;
+   var pimage="${vo.pimage}";
    
       //카카오결제API
       var IMP = window.IMP; // 생략 가능
          IMP.init("imp85774140"); // 예: imp00000000
 
       function requestPay() {
-         alert(uid + "\n" + plprice + "\n" + pkname + "\n" + pmodel + "\n" +uemail + "\n" + uname + "\n" + utel + "\n" + apay);
          // IMP.request_pay(param, callback) 결제창 호출
          IMP.request_pay({ // param
             pg : "kakaopay",
@@ -231,14 +229,13 @@
                      type : "post",
                      url : "/trade/pinsert",
                      data : {aid:uid, aemail:uemail, aname:uname, amodel:pmodel, akname:pkname, aprice:plprice,
-                        aaddress:uaddress, aaddress1:uaddress1, atell:utel, apay:apay},
+                        aaddress:uaddress, aaddress1:uaddress1, atell:utel, apay:apay, del:del, aimage:pimage},
                      dataType : "json",
                });
+               location.href="/productList/list";
             } else { //결제실패
                alert("실패");
             }
-            alert("!");
-            location.href="/";
          });
       }
 </script>

@@ -8,15 +8,7 @@
     </select>
     <select id="login2" resultType="com.example.domain.UserVO">
         select * from user
-        where uemail=#{uemail}
-    </select>
-      <select id="login3" resultType="com.example.domain.UserVO">
-        select * from user
-        where uname=#{uname}
-    </select>
-      <select id="login4" resultType="com.example.domain.UserVO">
-        select * from user
-        where utel=#{utel}
+        where uid=#{uid} and uemail=#{uemail} and uname=#{uname} and utel=#{utel}
     </select>
     
     <select id="list" resultType="com.example.domain.UserVO">
@@ -28,7 +20,7 @@
     <update id="update">
       update user
       set uname=#{uname}, upass=#{upass}, uimage=#{uimage}, uaddress=#{uaddress},
-      utel=#{utel},uemail=#{uemail},upay=#{upay}, uaddress1=#{uaddress1}
+      utel=#{utel},uemail=#{uemail},upay=#{upay},uaddress1=#{uaddress1}
       where uid=#{uid}
    </update>
    <update id="delete">

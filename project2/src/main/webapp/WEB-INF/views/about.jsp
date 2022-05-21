@@ -51,7 +51,7 @@
 			<p>New</p>
 		</div>
 		<div class="pro1">
-			<a href="#">
+			<a href="/productList/list?keyword=나이키">
 				<img src="/resources/img/아디다스로고.jpg" 
 				style="object-fit:contain; background:black;"
 				/>
@@ -65,7 +65,7 @@
 			<p>빠른배송</p>
 		</div>
 		<div class="pro1">
-			<a href="#">
+			<a href="/productList/list?keyword=샤넬">
 				<img src="/resources/img/명품가방.webp"/>
 			</a>
 			<p>명품</p>
@@ -213,19 +213,17 @@
 
 	            // 반응형 웹구현 옵션
 	            responsive : [
-	                          {
-	                              breakpoint : 1200,  //화면 사이즈 960px
-	                              settings : { slidesToShow : 3 }  //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
-	                          },
-	                          {
-	                              breakpoint : 768,  //화면 사이즈 768px
-	                              settings : { slidesToShow : 2 }  //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
-	                          }
-	                      ]
-	                  });
-	              };
-		
-	   
-	    	
+	                {
+	                    breakpoint : 1200,  //화면 사이즈 960px
+	                    settings : { slidesToShow : 3 }  //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+	                },
+	                {
+	                    breakpoint : 768,  //화면 사이즈 768px
+	                    settings : { slidesToShow : 2 }  //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+	                }
+	            ]
+	        });
+	    };
+
 </script>
 

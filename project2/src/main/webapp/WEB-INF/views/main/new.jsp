@@ -10,7 +10,7 @@
 	<script id="temp" type="text/x-handlebars-template">
 	{{#each list}}
 		<div class="new">
-			<div><a href=""><img src="/display?fileName={{pimage}}" width=150></a></div>
+			<div><a href="/productList/read?pmodel={{pmodel}}"><img src="/display?fileName={{pimage}}" width=150></a></div>
 			<div><p class="ellipsis-pename">{{pename}}</p></div>
 			<div><p class="ellipsis-pkname">{{pkname}}</p></div>
 			<div><p class="ellipsis-pbrand">{{pbrand}}</p></div>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.example.dao.MypageDAO;
 import com.example.dao.MysqlDAO;
 import com.example.dao.ProductListDAO;
 import com.example.dao.TradeDAO;
@@ -15,13 +16,12 @@ import com.example.domain.SellVO;
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/**/*.xml"})
 public class MysqlTest {
     @Autowired
-    private TradeDAO dao;
+    private MypageDAO dao;
     
     
     @Test
-    public void getTime(SellVO vo){
-    	String pmodel="sh-adbo1";
-    	String ssize="260";
-    	dao.sinsert(vo);
+    public void getTime(String sid){
+    	sid="red";
+    	dao.count3(sid);
     }
 }

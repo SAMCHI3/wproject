@@ -18,12 +18,12 @@
 					<input class="form-control" type="text" id="uname" name="uname" />
 				</div>
 				<div class="unit">
-					<label for="uid"><h6>아이디</h6></label>
+					<label for="uid"><h6>아이디<span>(필수)</span></h6></label>
 					<button type="button" id="check">중복체크</button>
 					<input class="form-control" type="text" name="uid" style="margin-top:10px;">
 				</div>
 				<div class="form-group has-feedback unit">
-					<label for="upass"><h6>패스워드</h6></label>
+					<label for="upass"><h6>패스워드<span>(필수)</span></h6></label>
 					<input class="form-control" type="password" id="upass" name="upass" />
 				</div>
 				<div class="form-group has-feedback unit">
@@ -56,16 +56,16 @@
 					 		</select>					
 				</div>
 				<div class="form-group has-feedback unit">
-					<label for="uemail"><h6>이메일</h6></label>
+					<label for="uemail"><h6>이메일<span>(필수)</span></h6></label>
 					<button type="button" id="check2">이메일중복체크</button>
 					<input class="form-control" type="email" id="uemail" name="uemail" style="margin-top: 10px;"/>
 				</div>
 				<div class="form-group has-feedback unit">
-					<label for="utel"><h6>전화번호</h6></label>
-					<input class="form-control" type="text" id="utel" name="utel" />
+					<label for="utel"><h6>전화번호<span>(필수)</span></h6></label>
+					<input class="form-control" type="text" id="utel" name="utel" placeholder="ex)010-1111-1111"/>
 				</div>
 				<div class="form-group has-feedback unit">
-					<label for="uaddress"><h6>주소</h6></label>
+					<label for="uaddress"><h6>주소<span>(필수)</span></h6></label>
 					<button type="button" id="search">주소검색</button><br>
 					<input class="form-control" type="text" id="uaddress" name="uaddress" style="margin-top:10px;"/>
 				</div>
@@ -167,7 +167,7 @@ $(frm).on("submit",function(e){
 	var uaddress=$(frm.uaddress).val();
 	var uaddress1=$(frm.uaddress1).val();
 	
-	alert(uname+"\n"+uid+"\n"+upass+"\n"+udate+"\n"+udate2+"\n"+udate3+"\n"+ugender+"\n"+uemail+"\n"+utel+"\n"+uaddress+"\n"+uaddress1+"\n")
+// 	alert(uname+"\n"+uid+"\n"+upass+"\n"+udate+"\n"+udate2+"\n"+udate3+"\n"+ugender+"\n"+uemail+"\n"+utel+"\n"+uaddress+"\n"+uaddress1+"\n")
 	
 	if(uname==""){
          alert("이름을 입력하세요");

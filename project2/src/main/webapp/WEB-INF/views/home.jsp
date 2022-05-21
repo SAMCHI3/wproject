@@ -33,6 +33,13 @@ body {
 			<hr/>
 			<ul class="login">
 				<li>
+	               <c:if test="${uid!=null}">
+	                  <span>
+	                     <a href="#" id="chat">고객문의</a>
+	                  </span>
+	               </c:if>
+	            </li>
+				<li>
 					<c:if test="${uid!=null}">
 						<span>
 							<a href="/user/mypage?uid=${uid}">마이페이지</a>
@@ -46,16 +53,18 @@ body {
 						</span>
 					</c:if>
 				</li>		
-				<li><c:if test="${uid==null}">
-					<span>
-						<a href="/user/login">로그인</a>
-					</span>
-				</c:if>
-				</li>
 				<li>
+					<c:if test="${uid==null}">
+						<span>
+							<a href="/user/login">로그인</a>
+						</span>
+					</c:if>
+				</li>
+				<li class="out">
 				<c:if test="${uid!=null}">
 					<span>
-						<a href="/user/logout">로그아웃</a>
+						<p>${uid}님 환영합니다</p>
+						<a href="/user/logout" style="display : inline-block;">로그아웃</a>
 					</span>
 				</c:if>	
 				</li>
@@ -102,6 +111,7 @@ body {
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
 <script>
+
 	$("#chat").on("click", function(e){
 		e.preventDefault();
 		window.open("/chat", "chat", "width=500, height=700, top=200, left=900");

@@ -39,8 +39,10 @@
 	<beans:bean id="loginInterceptor" class="com.example.interceptor.LoginInterceptor"/>
 	<interceptors>
 		<interceptor>
-			<mapping path="/board/read"/>
 			<mapping path="/board/insert"/>
+         	<mapping path="/trade/read"/>
+         	<mapping path="/trade/sinsert"/>
+         	<mapping path="/board/read"/>
 			<beans:ref bean="loginInterceptor"/>
 		</interceptor>
 	</interceptors>

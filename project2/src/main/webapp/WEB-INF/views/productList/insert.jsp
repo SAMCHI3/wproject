@@ -131,7 +131,6 @@
 			alert("성별을 선택하세요");
 			return;
 		}
-		alert(pimage);
 		if(!confirm("등록하시겠습니까?")) return;
 		frm.submit();
 	})

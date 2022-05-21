@@ -70,9 +70,6 @@
 				var ncode2 = $(frm.ncode2).val();
 				var nid = $(frm.nid).val();
 
-				alert(notice + "\n" + ntitle + "\n" + nid + "\n" + ncode1
-						+ "\n" + ncode2);
-
 				if (notice == "") {
 					alert("내용을 입력하세요!");
 					$(frm.notice).focus();

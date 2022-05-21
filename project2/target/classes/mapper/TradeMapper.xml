@@ -17,7 +17,7 @@
     	update buy set bout=#{bout} where bcode=#{bcode}
     </update>
     <insert id="pinsert">
-    	insert into api(aid,aemail,aname,amodel,akname,aprice,aaddress,aaddress1,atell,apay)
-    	values(#{aid},#{aemail},#{aname},#{amodel},#{akname},#{aprice},#{aaddress},#{aaddress1},#{atell}, #{apay})
+    	insert into api(aid,aemail,aname,amodel,akname,aprice,aaddress,aaddress1,atell,apay,del,aimage)
+    	values(#{aid},#{aemail},#{aname},#{amodel},#{akname},#{aprice},#{aaddress},#{aaddress1},#{atell}, #{apay}, #{del},#{aimage})
     </insert>
 </mapper>

@@ -31,6 +31,22 @@ function pieChart(chartTitle, chartData){
 	            chart.draw(data, google.charts.Line.convertOptions(options));
 	      }
 	   }
+	  
+	  function lineChart1(chartTitle, chartData) {
+	      google.charts.load('current', {'packages':['line']});
+	       google.charts.setOnLoadCallback(drawChart);
+
+	       function drawChart() {
+	          var data = google.visualization.arrayToDataTable(chartData);
+	            var options = {
+	              chart: {
+	                title: chartTitle,
+	              }
+	            };
+	            var chart = new google.charts.Line(document.getElementById('chart1'));
+	            chart.draw(data, google.charts.Line.convertOptions(options));
+	      }
+	   }
 
 
 	function barChart(chartTitle, chartData){

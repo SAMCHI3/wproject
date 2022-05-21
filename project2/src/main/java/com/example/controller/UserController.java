@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.example.dao.MypageDAO;
 import com.example.dao.UserDAO;
 import com.example.domain.Criteria;
 import com.example.domain.PageMaker;
@@ -27,8 +28,10 @@ import com.example.domain.UserVO;
 public class UserController {
    @Autowired
    UserDAO dao;
-
-
+   
+   @Autowired
+   MypageDAO mdao;
+   
    @Autowired
    BCryptPasswordEncoder passEncoder;
 
@@ -46,7 +49,6 @@ public class UserController {
    
    @RequestMapping("/list")
    public String list(Model model){
-   
       model.addAttribute("pageName", "user/list.jsp");
       return "/home";
    }
@@ -97,54 +99,25 @@ public class UserController {
       return result;
    }
    
-   @RequestMapping(value="/inserttest2", method=RequestMethod.POST)
+
+   @RequestMapping(value="/inserttest2", method={RequestMethod.POST,RequestMethod.GET})
    @ResponseBody
-   public int inserttestPost2(String uemail, HttpSession session){
+   public int inserttestPost2(String uid,String uemail,String uname,String utel, HttpSession session){
       int result=0;
-      UserVO vo=dao.read2(uemail);
+      UserVO vo=dao.read2(uid,uemail,uname,utel);
       if(vo!=null){
          if(uemail==vo.getUemail()){
-            System.out.println(uemail);
+            System.out.println("................"+uid+"\n"+uemail+"\n"+uname+"\n"+utel);
             result=1;
+            session.setAttribute("uid", uid);
             session.setAttribute("uemail", uemail);
-         }else{
-            result=2;
-         }
-      }
-      return result;
-   }
-   
-   @RequestMapping(value="/inserttest3", method=RequestMethod.POST)
-   @ResponseBody
-   public int inserttestPost3(String uname, HttpSession session){
-      int result=0;
-      UserVO vo = dao.read3(uname);
-      if(vo!=null){
-         if(uname==vo.getUname()){
-            System.out.println(uname);
-            result=1;
             session.setAttribute("uname", uname);
-         }else{
-            result=2;
-         }
-      }
-      return result;
-   }
-   
-   @RequestMapping(value="/inserttest4", method=RequestMethod.POST)
-   @ResponseBody
-   public int inserttestPost4(String utel, HttpSession session){
-      int result=0;
-      UserVO vo = dao.read4(utel);
-      if(vo!=null){
-         if(utel==vo.getUtel()){
-            result=1;
             session.setAttribute("utel", utel);
          }else{
             result=2;
          }
       }
-      System.out.println("..........."+result);
+      System.out.println("........"+result);
       return result;
    }
    
@@ -229,6 +202,13 @@ public class UserController {
    
    @RequestMapping("/mypage")
    public String read1(Model model, String uid) {
+	   System.out.println(uid);
+	  String bid = uid;
+	  String sid = uid;
+	  model.addAttribute("vo1", mdao.count1(bid));
+	  model.addAttribute("vo2", mdao.count2(bid));
+	  model.addAttribute("vo3", mdao.count3(sid));
+	  model.addAttribute("vo4", mdao.count4(sid));
       model.addAttribute("vo", dao.read(uid));
       model.addAttribute("pageName", "user/mypage.jsp");
       return "/home";
@@ -236,6 +216,9 @@ public class UserController {
    
    @RequestMapping("/smypage")
    public String sread(Model model, String uid) {
+	  String sid = uid;
+	  model.addAttribute("vo3", mdao.count3(sid));
+	  model.addAttribute("vo4", mdao.count4(sid));
       model.addAttribute("vo", dao.read(uid));
       model.addAttribute("pageName", "user/smypage.jsp");
       return "/home";
@@ -243,6 +226,9 @@ public class UserController {
    
    @RequestMapping("/bmypage")
    public String bread(Model model, String uid) {
+	  String bid = uid;
+	  model.addAttribute("vo1", mdao.count1(bid));
+	  model.addAttribute("vo2", mdao.count2(bid));
       model.addAttribute("vo", dao.read(uid));
       model.addAttribute("pageName", "user/bmypage.jsp");
       return "/home";

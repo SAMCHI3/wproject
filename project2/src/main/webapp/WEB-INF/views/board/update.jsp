@@ -122,8 +122,6 @@
 	 	var bcontent=$(frm.bcontent).val();
 	 	var bid=$(frm.bid).val();
 		
-	 	alert(file+"\n"+bcontent+"\n"+bid+"\n");
-		
 	 	 if(bcontent==""){
 	         alert("내용을 입력하세요");
 	         $(frm.bcontent).focus();

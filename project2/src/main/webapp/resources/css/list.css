@@ -136,10 +136,10 @@ a{
 }
 .searchkey{
 	position: relative;
-    right: 15rem;
     top: 0.3rem;
 	display: inline-block;
     float: right;
+    right: 15%;
 }
 .searchkey img{
 	width: 2rem;
@@ -232,6 +232,9 @@ a{
 	color:white;
 }
 @media screen and (max-width: 1400px){
+	.searchkey{
+	right: 15%;
+	}
 	.brand-list{
 		width:150px;
 	}
@@ -250,7 +253,7 @@ a{
 	left:30%;
 	}
 	.shop-search{
-	right:230px;
+	right:1px;
 	bottom:0px;
 	}
 	.insert{
@@ -260,11 +263,10 @@ a{
 	#page{
 	left:7%;
 	}
+
 }
 @media screen and (max-width: 990px){
-	.searchkey{
-	right:7rem;
-	}
+
 	#brand{
 	left:-10rem;
 	}

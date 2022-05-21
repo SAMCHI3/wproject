@@ -19,7 +19,7 @@ public class ProductListDAOImpl implements ProductListDAO{
 	SqlSession session;
 	String namespace="com.example.mapper.ProductListMapper";
 	@Override
-	public List<ProductVO> list(Criteria cri) {
+	public List<ProductVO1> list(Criteria cri) {
 		return session.selectList(namespace+".list",cri);
 		
 	}
@@ -94,6 +94,14 @@ public class ProductListDAOImpl implements ProductListDAO{
 	@Override
 	public List<ProductVO1> list() {
 		return session.selectList(namespace+".list1");
+	}
+	@Override
+	public List<HashMap<String, Object>> slist(String smodel) {
+		return session.selectList(namespace + ".slist",smodel);
+	}
+	@Override
+	public List<HashMap<String, Object>> blist(String bmodel) {
+		return session.selectList(namespace + ".blist",bmodel);
 	}
 	
 }

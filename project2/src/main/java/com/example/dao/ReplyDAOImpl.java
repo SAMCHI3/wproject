@@ -2,6 +2,7 @@ package com.example.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.net.ssl.SSLContext;
 
@@ -58,5 +59,20 @@ public class ReplyDAOImpl implements ReplyDAO{
 		return session.selectOne(namespace + ".read",rno);
 	}
 	
+	@Override
+	public void rcount(int rno, ReplyVO vo) {
+		Map<String,Object> map=new HashMap<>();
+		map.put("rno", rno);
+		map.put("vo", vo);
+		session.update(namespace+".rcount",map);
+	}
+
+	@Override
+	public void rcountcancel(int rno, ReplyVO vo) {
+		Map<String,Object> map=new HashMap<>();
+		map.put("rno", rno);
+		map.put("vo", vo);
+		session.update(namespace+".rcountcancel",map);
+	}
 
 }

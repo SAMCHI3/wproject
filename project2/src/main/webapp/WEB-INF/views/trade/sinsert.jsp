@@ -28,7 +28,7 @@
                <div class="tr1">${vo.pename}</div>
                <div class="tr1">${vo.pkname}</div>
                <c:if test="${vo.plprice==null}">
-                  <div class="tr1" id="plprice">즉시판매가격: ${vo.bprice}</div>
+                  <div class="tr1" id="plprice">즉시판매가격: <fmt:formatNumber value="${vo.bprice}" pattern="#,###"/>원</div>
                </c:if>
                <c:if test="${vo.plprice!=null}">
                   <div class="tr1" id="plprice">평균거래가격: ${vo.plprice}</div>
@@ -97,7 +97,6 @@
       
       if (!confirm("상품을 즉시판매하실래요?")) return;
       frm.submit();
-      href.location="/";
    });
    
    //입찰판매눌렀을때
@@ -112,10 +111,8 @@
       ing = $(frm.ing).val(ing1);
       $(frm.sout).val('0');
       
-      alert(ssize);
       if (!confirm("상품을 입찰판매하실래요?")) return;
       frm.submit();
-      href.location="/";
    });
 
 </script>

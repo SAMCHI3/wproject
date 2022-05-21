@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="/resources/css/read.css">
@@ -31,10 +32,10 @@
 					<input style="display: none;"  type="text" name="lmodel" value="${vo.pmodel}">
 					<input style="display: none;"  type="text" name="lno" value="${vo.lno}">
 					
-			 		<c:if test='${vo.lpcnt==null || vo.lpcnt=="0"}'> 
+			 		<c:if test='${vo.lpcnt=="0" || vo.lpcnt=="1" && uid!=null}'>
 					<button type="submit" id="dib">🤍 <span style="display:none;">[${vo.plcount}]</span></button>
 			 		</c:if> 
-			 		<c:if test='${vo.lpcnt=="1"}'> 
+			 		<c:if test='${vo.lpcnt=="2"}'> 
 					<button type="button" id="cancel">❤️<span style="display:none;"> [${vo.plcount}]</span></button> 
 					</c:if> 
 				</div>
@@ -136,6 +137,9 @@
 				<h5>검수에 합격한 경우에 한하여 KREAM의 정품 인증 패키지가 포함된 상품이 배송됩니다.</h5>
 			</div>
 		</div>
+		
+			<div id="chart"></div>
+		
 </div>
 <script>
 	var ssize=""
@@ -143,6 +147,7 @@
 	var plcount="${vo.plcount}";
 	var lpcnt="${vo.lpcnt}";
 	var pmodel="${vo.pmodel}";
+	var smodel="${vo.pmodel}"
 	
 	//찜
 	$(frm).on("submit", function(e){
@@ -157,29 +162,27 @@
 
 		if(!confirm("찜하시겠습니까?")) return;
 		
-		 if(lpcnt==""){
-			 lpcnt="1";
+		 if(lpcnt=="0"){
+			 lpcnt="2";
 			 $(frm.lpcnt).val(lpcnt);
 			 plcount=plcount+1;
 			 $(frm.plcount).val(plcount);
 			 $(frm.lmodel).val(lmodel);
 			 $(frm.lid).val(lid);
-				alert(lpcnt);
 			 alert("찜완료")
 			 frm.method="post";
 			 frm.action="insert1";
 			 frm.submit();
 		 }
 		 
-		 if(lpcnt=="0"){
-			 lpcnt="1";
+		 else if(lpcnt=="1"){
+			 lpcnt="2";
 			 $(frm.lpcnt).val(lpcnt);
 			 plcount=plcount+1;
 			 $(frm.plcount).val(plcount);
 			 $(frm.lmodel).val(lmodel);
 			 $(frm.lid).val(lid);
 			 lno=$(frm.lno).val();
-			 alert(lpcnt);
 			 alert("찜완료")
 			 frm.method="post";
 			 frm.action="update1";
@@ -197,8 +200,8 @@
 		var lid=$(frm.uid).val();
 		if(!confirm("찜취소 하시겠습니까?")) return;
 		
-		if(lpcnt=="1"){
-			lpcnt="0";
+		if(lpcnt=="2"){
+			lpcnt="1";
 			$(frm.lpcnt).val(lpcnt);
 			plcount=plcount-1;
 			$(frm.plcount).val(plcount);
@@ -208,7 +211,6 @@
 			frm.method="post";
 			frm.action="update2";
 			frm.submit();
-			alert(plcount);
 		//	location.href="/productList/read?pmodel=" + pmodel+"&uid=" + uid + "&lpcnt=" + lpcnt
 		}
 	})	 
@@ -262,4 +264,26 @@
       var pmodel=$(".pmodel").html();
       location.href="update?pmodel="+pmodel;
    })
+   
+   //판매차트
+   $.ajax({
+		type:"get",
+		url:"/productList/read.json",
+		data: {smodel:smodel},
+		success:function(data){
+			var title="최근판매현황";
+			lineChart(title, data);
+		}
+	});
+	
+	//구매차트
+	   $.ajax({
+			type:"get",
+			url:"/productList/read1.json",
+			data: {bmodel:smodel},
+			success:function(data){
+				var title="최근구매현황";
+				lineChart1(title, data);
+			}
+		});
 </script>

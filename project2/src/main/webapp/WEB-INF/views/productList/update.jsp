@@ -270,7 +270,6 @@
 		var pccode=$(frm.pccode).val();
 		var plux=$('input[name="plux"]:checked').val();
 		var pgender=$('input[name="pgender"]:checked').val();
-		alert(pmodel+"\n"+pimage+"\n"+pbrand+"\n"+pename+"\n"+pkname+"\n"+pcode+"\n"+pccode+"\n"+plux+"\n"+pgender);
 		
 		if(pmodel==""){
 			alert("모델명을 입력하세요");

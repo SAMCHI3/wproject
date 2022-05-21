@@ -10,8 +10,8 @@
 <!--         limit #{pageStart},#{perPageNum} -->
     </select>
     <insert id="insert">
-    	insert into reply(rbno,rid,rcontent,rimage)
-    	values(#{rbno},#{rid},#{rcontent},#{rimage})
+    	insert into reply(rbno,rid,rcontent,rimage,rrlike)
+    	values(#{rbno},#{rid},#{rcontent},#{rimage},#{rrlike})
     </insert>
     <update id="update">
     	update reply 
@@ -26,4 +26,15 @@
 <!--         select count(*) from reply -->
 <!--         where rbno=#{rbno} -->
 <!--     </select> -->
+	<update id="rcount">
+		update reply
+		set rrlike=rrlike+1
+		where rno=#{rno}
+	</update>
+	
+	<update id="rcountcancel">
+		update reply
+		set rrlike=rrlike-1
+		where rno=#{rno}
+	</update>
 </mapper>

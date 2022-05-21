@@ -36,6 +36,7 @@ div.header {
 .chat_wrap #chat .sender {
    margin: 10px 25px 0px 10px;
    font-weight: bold;
+   font-size: 16px;
 }
 
 .chat_wrap #chat .message {
@@ -64,12 +65,35 @@ div.header {
 }
 
 #txtMessage {
-   width: 100%;
-   height: 80px;
-   border: none;
-   padding: 5px;
+    width: 100%;
+    height: 80px;
+    border: none;
+    padding: 5px;
+    vertical-align: middle;
+    line-height: 80px;
 }
 
 #txtMessage:focus {
 	outline:none;
+}
+.receiver{
+	border: none;
+    border-bottom: 2px solid black;
+    text-align: center;
+    margin-right: 15px;
+    outline:none;
+}
+.a1{
+	margin: 0px 15px 0px 15px;
+}
+.delete{
+	color: black;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    bottom: 1.5px;
+    margin: 0px 20px 0px 0px;
+}
+.date{
+	font-weight:bold;
 }

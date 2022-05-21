@@ -38,31 +38,41 @@
            </div>
            
            
-         <span class="imote"><button>❤️</button>${vo.bcount}</span>
-         <h5>댓글</h5>
+         <span class="imote"><button type="button">❤️</button>${vo.bcount}</span>
+         
      <div class="read-button">
 			<c:set var="bid" value="${vo.bid}" />
          <c:if test="${bid eq uid}">
             <button type="button" id="update">수정</button>
             <button class=delete type="button">삭제</button>
          </c:if>
-
+         <c:if test="${uid eq 'blue'}">
+         	<button type="button" id="update">수정</button>
+            <button class=delete type="button">삭제</button>
+         </c:if>
 		</div>  
+		<div><h5>댓글</h5></div>
 		<div>
 			<div id="replies"></div>
 			<script id="temp" type="text/x-handlebars-template">
   		 	{{#each list}}
 				<div class="row" rno="{{rno}}" style="border:none; padding-bottom:10px;">
+					<div class="row" rno="{{rno}}" style="border-bottom:1px dotted gray;padding-bottom:10px;">
 					<div style="display:none;">
 						{{rbno}} {{rno}}
 					</div>
-					<h4 class="replies"><img src="/display?fileName={{uimage}}"> {{rid}} 
+					<h4 class="replies"><img src="/display?fileName={{uimage}}" onerror="this.src='/resources/img/유저.png'"/> {{rid}} 
 						<span>{{rdate}}</span> </h4>
 					<textarea class="rcontent" rows=3 sytle="board:none;">{{rcontent}}</textarea>
+					
+						<button type="button" class="rrlike" style="display:{{display1 rrlike}}">🤍</button>
+						<button type="button" class="rcancle" style="display:{{display2 rrlike}}">❤️</button>
+					
 					<div class="rbutton" style="display:{{display rid}}">
 						<button type="button" class="rupdate">수정</button>
 						<button type="button" class="rdelete">삭제</button>
 					</div>
+				</div>
 				</div>
 			{{/each}}
    			</script>
@@ -72,6 +82,18 @@
                   return "none";
                }
             });
+            
+            Handlebars.registerHelper("display1", function(rrlike) {
+				if (rrlike == 1) {
+					return "none";
+				}
+			});
+			
+			Handlebars.registerHelper("display2", function(rrlike) {
+				if (rrlike == 0) {
+					return "none";
+				}
+			});
          </script>
          <div style="display: none;">
             <input type="text" name="rid"> 
@@ -97,6 +119,7 @@ $(frm).on("submit", function(e){
    frm.action="/reply/insert";
    // frm.method="post";
    var rid="${uid}";
+   var rrlike=0;
    var rcontent = CKEDITOR.instances.editor.getData();
    if(rcontent==""){
       alert("내용을 입력해주세요");
@@ -106,7 +129,7 @@ $(frm).on("submit", function(e){
    if(!confirm("등록하시겠습니까?"))return;
         rbno=$(frm.rbno).val(rbno);
         rid=$(frm.rid).val(rid);
-        alert(rbno+rid+rcontent+rimage)
+        rrlike=$(frm.rrlike).val(rrlike);
        frm.submit();
          alert("등록성공");
 
@@ -128,6 +151,42 @@ $("#replies").on("click",".rupdate",function(e){
          getRlist();
       }
    });
+});
+
+//댓글 좋아요
+$("#replies").on("click",".rrlike",function(e){
+	e.preventDefault();
+	var row=$(this).parent().parent();
+	var rno=row.attr("rno");
+	var rrlike=1
+	if(!confirm("좋아요 하실래요?")) return;
+	$.ajax({
+		type:"post",
+		data:{rrlike:rrlike, rno:rno},
+		url: "/reply/update1",
+		success:function(){
+			alert("좋아요!");
+			getRlist();
+		}
+	});
+});
+
+//댓글 좋아요취소
+$("#replies").on("click",".rcancle",function(e){
+	e.preventDefault();
+	var row=$(this).parent().parent();
+	var rno=row.attr("rno");
+	var rrlike=0
+	if(!confirm("내용을 수정하실래요?")) return;
+	$.ajax({
+		type:"post",
+		url:"/reply/update1",
+		data:{rrlike:rrlike, rno:rno},
+		success:function(){
+			alert("좋아요취소!");
+			getRlist();
+		}
+	});
 });
 
 //댓글 삭제
@@ -189,7 +248,6 @@ var ckeditor_config = {
 $(frm).on("click","#update",function(e){
    e.preventDefault();
       var bno=$(this).parent().parent().find(".bno").val();
-      alert(bno);
       location.href="/board/update?bno=" + bno;
    })
 

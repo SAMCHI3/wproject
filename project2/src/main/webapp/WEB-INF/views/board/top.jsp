@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="/resources/css/boardlist.css">
-    <link rel="stylesheet" href="/resources/css/boardtop.css">
 <div id="page">
 <div class="container">
 	<h1 >나만의 STYLE</h1>
@@ -11,8 +10,8 @@
 			<button><a href="/board/insert">글쓰기</a></button>
 		</div>
 		<div class="board-button">
-			<button class="famous2" type="button"><a href="/board/top">인기</a></button>	
-			<button class="new2" type="button"><a href="/board/list">최신</a></button>
+			<button class="famous" type="button"><a href="/board/top">인기</a></button>
+			<button class="new" type="button"><a href="/board/list">최신</a></button>
 		</div>
 		
 		<div>
@@ -92,7 +91,6 @@
  		 	var bcount=$(this).parent().find(".bcount").attr("bcount");
  		 	bcount=bcount+1;
  		 	lno;
- 		 	alert(bcount+"/"+lbcnt+"/"+lid+"/"+lbno+"/"+lno);
 		}
 		if(!confirm("찜하시겠습니까?")) return;			
 			$.ajax({
@@ -123,7 +121,6 @@
  		 	var bcount=$(this).parent().find(".bcount").attr("bcount");
  		 	bcount=bcount-1;
  		 	lno;
- 		 	alert(bcount+"/"+lbcnt+"/"+lid+"/"+lbno+"/"+lno);
  		 	if(!confirm("찜취소하시겠습니까?")) return;			
  			$.ajax({
  				type:"post",
@@ -163,7 +160,6 @@
  	$("#tbl").on("click",".img",function(){
  		var bno=$(this).parent().find(".bno").html();
  		var bid=$(this).parent().find(".bid").html();
- 		alert(bno+bid);
  		location.href="/board/read?bno=" + bno+"&bid="+bid;
  	})
 	

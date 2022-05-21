@@ -3,7 +3,8 @@
 <link rel="stylesheet" href="/resources/css/userlist.css">
 <div id="page">
 	<div class="container">
-	<h1>사용자목록</h1>
+	<h1 class="pay"><a href="/manager/list">결제목록</a></h1>
+	<h1 class="luser">사용자목록</h1>
 	<div id="tbl"></div>
 	<script id="temp" type="text/x-handlebars-template">	
 		<tr class="userchk">
@@ -38,7 +39,6 @@
 			<td class="user" width=150>
 				<p class="ucode" ucode="{{ucode}}">{{displayDel ucode}}</p>
 			</td>
-			
 			<td class="user" ><input type="checkbox" class="chk"></td>
 		</tr>
 	{{/each}}
@@ -57,6 +57,11 @@
 	var page=1;
 	getList();
 	
+	$("#tbl").on("click","#chkAll",function(){
+	      var checked = $('#chkAll').is(':checked');
+	      if(checked)$('input:checkbox').prop('checked',true);
+	      else $('input:checkbox').prop('checked',false);
+	   })
 	
 	//유저복구 버튼을 클릭한경우
 	$("#tbl").on("click", "#delete", function(){

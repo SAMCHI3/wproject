@@ -5,14 +5,14 @@
 	<select id="blist" resultType="com.example.domain.ProductVO2">
         select b.*,p.pename,p.pkname,p.pimage,p.pmodel
 		from buy b, product p
-		where bmodel=pmodel and bid=#{bid} and ing='2' and bout='0'
+		where bmodel=pmodel and bid=#{bid} and ing='2' and bout='0' or bout='5'
 		order by bdate desc
 		limit 0,3
     </select>
     <select id="slist" resultType="com.example.domain.ProductVO">
         select s.*,p.pename,p.pkname,p.pimage,p.pmodel
 		from sell s, product p
-		where smodel=pmodel and sid=#{sid} and ing='4' and sout='0'
+		where smodel=pmodel and sid=#{sid} and ing='4' and sout='0' or sout='5'
 		order by sdate desc
 		limit 0,3
     </select>
@@ -38,6 +38,57 @@
     <select id="llist" resultType="com.example.domain.ProductVO1">
     	select p.*, l.*
 		from product p, likes l
-		where pmodel=lmodel and lid=#{lid} and lpcnt='1';
+		where pmodel=lmodel and lid=#{lid} and lpcnt='2';
     </select>
+     <select id="slist10" resultType="com.example.domain.ProductVO"> 
+    select s.*,p.pename,p.pkname,p.pimage,p.pmodel from sell s, product p 
+    where smodel=pmodel and sid=#{sid} and sout='0' and ing='4' order by sdate desc limit 0,3 
+    </select>
+   
+   <select id="slist11" resultType="com.example.domain.ProductVO"> 
+   select s.*,p.pename,p.pkname,p.pimage,p.pmodel from sell s, product p 
+   where smodel=pmodel and sid=#{sid} and sout='0' and ing='3' order by sdate desc limit 0,3 
+   </select>
+   
+   <select id="slist12" resultType="com.example.domain.ProductVO"> 
+   select s.*,p.pename,p.pkname,p.pimage,p.pmodel from sell s, product p 
+   where smodel=pmodel and sid=#{sid} and sout='5' and (ing='3'or ing='4') order by sdate desc limit 0,3 
+   </select>
+   
+   <select id="blist20" resultType="com.example.domain.ProductVO"> 
+   select b.*,p.pename,p.pkname,p.pimage,p.pmodel from buy b, product p 
+   where bmodel=pmodel and bid=#{bid} and bout='0' and ing='2' order by bdate desc limit 0,3 
+   </select>
+   
+   <select id="blist21" resultType="com.example.domain.ProductVO"> 
+   select b.*,p.pename,p.pkname,p.pimage,p.pmodel from buy b, product p 
+   where bmodel=pmodel and bid=#{bid} and bout='0' and ing='1' order by bdate desc limit 0,3 
+   </select>
+   
+   <select id="blist22" resultType="com.example.domain.ProductVO"> 
+   select b.*,p.pename,p.pkname,p.pimage,p.pmodel from buy b, product p 
+   where bmodel=pmodel and bid=#{bid} and bout='5' and (ing='1'or ing='2') order by bdate desc limit 0,3 
+   </select>
+   
+<!--    <select id="llist1"></select> -->
+<!--    <select id="scount" resultType="int"> -->
+<!--    	select count(*) from buy -->
+<!--    	where ing='1' -->
+<!--    </select> -->
+   <select id="bcount" resultType="int"> 
+   	select count(*) from buy
+   	where ing='2' and bout='0' and bid=#{bid}
+   </select>
+   <select id="bcount1" resultType="int"> 
+   	select count(*) from buy
+   	where bout='5' and bid=#{bid}
+   </select>
+   <select id="scount" resultType="int"> 
+   	select count(*) from sell
+   	where ing='4' and sout='0' and sid=#{sid}
+   </select>
+   <select id="scount1" resultType="int"> 
+   	select count(*) from sell
+   	where sout='5' and sid=#{sid}
+   </select>
 </mapper>

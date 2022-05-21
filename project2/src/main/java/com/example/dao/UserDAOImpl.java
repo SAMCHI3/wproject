@@ -60,24 +60,18 @@ public class UserDAOImpl implements UserDAO{
    
 
    @Override
-   public UserVO read2(String uemail) {
-      return session.selectOne(namespace + ".login2", uemail);
+   public UserVO read2(String uid, String uemail, String uname, String utel) {
+      HashMap<String, Object> map = new HashMap<>();
+      map.put("uid", uid);
+      map.put("uemail",uemail);
+      map.put("uname", uname);
+      map.put("utel", utel);
+      return session.selectOne(namespace + ".login2",map);
    }
 
    @Override
    public void updatereset(UserVO vo) {
       session.update(namespace + ".updatereset",vo);
       
-   }
-
-   @Override
-   public UserVO read3(String uname) {
-      return session.selectOne(namespace + ".login3", uname);
-   }
-
-   @Override
-   public UserVO read4(String utel) {
-   
-      return session.selectOne(namespace + ".login4", utel);
    }
 }

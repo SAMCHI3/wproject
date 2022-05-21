@@ -6,6 +6,12 @@ html, body {
     
 }
 @font-face {
+    font-family: 'SuseongDotum';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/SuseongDotum.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
     font-family: 'Cafe24Ssurround';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
     font-weight: normal;
@@ -69,7 +75,7 @@ html, body {
     float: right;
 }
 .footer-copy{
-	font-family: 'RixYeoljeongdo_Regular';
+	font-family: 'SuseongDotum';
 	padding-top: 20px;
 	font-size: 25px;
 }

@@ -25,25 +25,35 @@
 				<input style="display:none" type="text" bcount={{bcount}} class="bcount">
 				<input style="display:none" type="text" lbcnt="{{lbcnt}}" class="lbcnt">
 				<input style="display:none" type="text" lno="{{lno}}" class="lno">
-				<div class="like imote" style="display:{{display1 lbcnt}}"><button class="ibutton">🤍{{bcount}}<span style="display:none;">{{lbcnt}}]</span></button></div>
-				<div class="lcancel imote" style="display:{{display2 lbcnt}}"><button class="ibutton">❤️{{bcount}}<span style="display:none;">{{lbcnt}}]</span></button></div>
+				<div class="like imote" style="display:{{display0 lbcnt}}"><button class="ibutton">0🤍{{bcount}}<span style="display:none;">{{lbcnt}}</span></button></div>
+				<div class="ulike imote" style="display:{{display1 lbcnt}}"><button class="ibutton"><span style="display:none;">1</span>🤍{{bcount}}<span style="display:none;">{{lbcnt}}</span></button></div>
+				<div class="lcancel imote" style="display:{{display2 lbcnt}}"><button class="ibutton"><span style="display:none;">2</span>❤️{{bcount}}<span style="display:none;">{{lbcnt}}</span></button></div>
 				</div>
 		{{/each}}
 		</div>
 	</script>
 	<script>
 	
-		Handlebars.registerHelper("display1", function(lbcnt) {
-               if (lbcnt == "1") {
-                  return "none";
-               }
-            });
-            
-         Handlebars.registerHelper("display2", function(lbcnt) {
-               if (lbcnt == "0") {
-                  return "none";
-               }
-            });
+	Handlebars.registerHelper("display0", function(lbcnt) {
+        if (lbcnt == 1 || lbcnt == 2) {
+           return "none";
+        }
+     });
+
+	
+  Handlebars.registerHelper("display2", function(lbcnt) {
+        if (lbcnt == "" || lbcnt == 1) {
+           return "none";
+        }
+     });
+  
+   
+   Handlebars.registerHelper("display1", function(lbcnt) {
+       if (lbcnt == ""||lbcnt == 2) {
+          return "none";
+       }
+    });
+
        </script>  
 <div class="pagination"></div>
 </div>
@@ -55,46 +65,54 @@
 
 
  	
- 	//찜
+ 	//찜입력
  	$("#tbl").on("click",".like", function(e){
  		e.preventDefault();
+ 		
  		if(uid==""){
  			location.href="/user/login";
  		}
- 		if(uid!=""){
-//  			if(lbcnt==null){
-// 	 		 	var lid=$(this).parent().find(".bid").html();
-// 	 		 	var bno=$(this).parent().find(".bno").html();
-// 	 		 	var lbno=bno;
-// 	 		 	var lbcnt=$(this).parent().find(".lbcnt").attr("lbcnt");
-// 	 		 	var lbcnt=1;
-// 	 		 	var bcount=$(this).parent().find(".bcount").attr("bcount");
-// 	 		 	bcount=bcount+1;
-//  				alert(bcount+"/"+lbcnt+"/"+bno+"/"+lid+"/"+lbno);
-//  			}
-  		
-//  			if(!confirm("찜하시겠습니까?")) return;			
-//  			$.ajax({
-//  				type:"post",
-//  				data:{lbcnt:lbcnt,bcount:bcount,lbno:lbno,lid:lid},
-//  				url:"/board/insert1",
-//  				success:function(data){
-//  					 alert("찜완료")
-//  					 getList();
-//  				}
-//  			})	
  		
+ 		var lbno=$(this).parent().find(".bno").html();
+ 		if(uid!=""){
+ 			if(lbcnt==null){
+	 		 	var lid=$(this).parent().find(".bid").html();
+	 		 	var bno=$(this).parent().find(".bno").html();
+	 		 	var lbcnt=$(this).parent().find(".lbcnt").attr("lbcnt");
+	 		 	var lbcnt=2;
+	 		 	var bcount=$(this).parent().find(".bcount").attr("bcount");
+	 		 	bcount=bcount+1;
+ 			}
+  		
+ 			if(!confirm("찜하시겠습니까?")) return;			
+ 			$.ajax({
+ 				type:"post",
+ 				data:{lbcnt:lbcnt,bcount:bcount,lbno:lbno,lid:lid},
+ 				url:"/board/insert1",
+ 				success:function(data){
+ 					 alert("찜완료")
+ 					 getList();
+ 				}
+ 			})	
+ 		
+ 		
+ 		}
+ 	})
+ 	//찜수정
+ 		$("#tbl").on("click",".ulike",function(e){
+ 		e.preventDefault();
+ 		var lbcnt=$(this).parent().find(".lbcnt").attr("lbcnt");
+ 		if(uid==""){location.href="/user/login";}
  		var lno=$(this).parent().find(".lno").attr("lno");
  		var lbcnt=$(this).parent().find(".lbcnt").attr("lbcnt");
- 		if(lbcnt=="0"){
+ 		if(lbcnt==1){
  			var lid=$(this).parent().find(".bid").html();
  		 	var lbno=$(this).parent().find(".bno").html();
- 		 	var lbcnt=1;
+ 		 	var lbcnt=2;
  		 	var bno=$(this).parent().find(".bno").html();
  		 	var bcount=$(this).parent().find(".bcount").attr("bcount");
  		 	bcount=bcount+1;
  		 	lno;
- 		 	alert(bcount+"/"+lbcnt+"/"+lid+"/"+lbno+"/"+lno);
 		}
 		if(!confirm("찜하시겠습니까?")) return;			
 			$.ajax({
@@ -106,26 +124,26 @@
 					 getList();
 				}
 			})	
- 		}
  	})
  			 
  	//찜 취소
  	$("#tbl").on("click",".lcancel",function(e){
  		e.preventDefault();
+ 		
+ 		var lbcnt=$(this).parent().find(".lbcnt").attr("lbcnt");
  		if(uid==""){
  			location.href="/user/login";
  			}
- 		var lno=$(this).parent().find(".lno").attr("lno");
- 		var lbcnt=$(this).parent().find(".lbcnt").attr("lbcnt");
- 		if(lbcnt=="1"){
+ 		if(lbcnt==2){
+ 			var lno=$(this).parent().find(".lno").attr("lno");
+ 		
  			var lid=$(this).parent().find(".bid").html();
  		 	var lbno=$(this).parent().find(".bno").html();
- 		 	var lbcnt=0;
+ 		 	var lbcnt=1;
  		 	var bno=$(this).parent().find(".bno").html();
  		 	var bcount=$(this).parent().find(".bcount").attr("bcount");
  		 	bcount=bcount-1;
  		 	lno;
- 		 	alert(bcount+"/"+lbcnt+"/"+lid+"/"+lbno+"/"+lno);
  		 	if(!confirm("찜취소하시겠습니까?")) return;			
  			$.ajax({
  				type:"post",
@@ -140,8 +158,7 @@
  			
  		}
  	})	 
-
- 	
+ 
  	$("#tbl").on("click",".top",function(){
  		getTop();
  		function getTop(){
@@ -168,7 +185,6 @@
  	$("#tbl").on("click",".img",function(){
  		var bno=$(this).parent().find(".bno").html();
  		var bid=$(this).parent().find(".bid").html();
- 		alert(bno+bid);
  		location.href="/board/read?bno=" + bno+"&bid="+bid;
  	})
  	//검색어 엔터

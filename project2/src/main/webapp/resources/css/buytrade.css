@@ -113,3 +113,7 @@
     border: 1px solid gray;
     box-shadow: 2px 1px 1px 1px lightgrey;
 }
+#cancel a{
+	color:black;
+	text-decoration:none;
+}

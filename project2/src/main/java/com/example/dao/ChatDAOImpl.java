@@ -16,8 +16,8 @@ public class ChatDAOImpl implements ChatDAO{
 	String namespace="com.example.mapper.ChatMapper";
 	
 	@Override
-	public List<ChatVO> list() {
-		return session.selectList(namespace + ".list");
+	public List<ChatVO> list(String uid) {
+		return session.selectList(namespace + ".list",uid);
 	}
 
 	@Override
@@ -28,6 +28,11 @@ public class ChatDAOImpl implements ChatDAO{
 	@Override
 	public void delete(int id) {
 		session.delete(namespace + ".delete", id);
+	}
+
+	@Override
+	public List<ChatVO> list2() {
+		return session.selectList(namespace + ".list2");
 	}
 
 }

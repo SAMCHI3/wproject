@@ -50,6 +50,55 @@ public class MypageDAOImpl implements MypageDAO{
 		return session.selectList(namespace + ".llist", lid);
 	}
 
-	
+	   @Override
+	   public List<SellVO> slist10(String sid) {
+	      return session.selectList(namespace + ".slist10", sid);
+	   }
+
+	   @Override
+	   public List<SellVO> slist11(String sid) {
+	      return session.selectList(namespace + ".slist11", sid);
+	   }
+	   
+	   @Override
+	   public List<SellVO> slist12(String sid) {
+	      return session.selectList(namespace + ".slist12", sid);
+	   }
+
+	   @Override
+	   public List<BuyVO> blist20(String bid) {
+	      return session.selectList(namespace+ ".blist20",bid);
+	   }
+
+	   @Override
+	   public List<BuyVO> blist21(String bid) {
+	      return session.selectList(namespace+ ".blist21",bid);
+	   }
+
+	   @Override
+	   public List<BuyVO> blist22(String bid) {
+	      return session.selectList(namespace+ ".blist22",bid);
+	   }
+
+	@Override
+	public int count1(String bid) {
+		return session.selectOne(namespace + ".bcount", bid);
+	}
+
+	@Override
+	public int count2(String bid) {
+		return session.selectOne(namespace + ".bcount1", bid);
+	}
+
+	@Override
+	public int count3(String sid) {
+		return session.selectOne(namespace + ".scount", sid);
+	}
+
+	@Override
+	public int count4(String sid) {
+		return session.selectOne(namespace + ".scount1", sid);
+	}
+	   
 	
 }

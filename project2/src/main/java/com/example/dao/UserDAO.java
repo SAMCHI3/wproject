@@ -15,7 +15,5 @@ public interface UserDAO {
    public int total();
    public void lpupdate(ProductVO1 vo,String uid);
    public void updatereset(UserVO vo);
-   public UserVO read2(String uemail);
-   public UserVO read3(String uname);
-   public UserVO read4(String utel);
+   public UserVO read2(String uid,String uemail,String uname,String utel);
 }

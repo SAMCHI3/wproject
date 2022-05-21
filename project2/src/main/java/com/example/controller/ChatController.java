@@ -18,8 +18,13 @@ public class ChatController {
 	ChatDAO dao;
 	
 	@RequestMapping("/list.json")
-	public List<ChatVO> list(){
-		return dao.list();
+	public List<ChatVO> list(String uid){
+		return dao.list(uid);
+	}
+	
+	@RequestMapping("/list2.json")
+	public List<ChatVO> list2(){
+		return dao.list2();
 	}
 	
 	@RequestMapping(value="/insert", method=RequestMethod.POST)
